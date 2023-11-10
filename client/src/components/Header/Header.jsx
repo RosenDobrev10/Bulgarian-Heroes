@@ -1,7 +1,8 @@
 import { Tab, initTE } from 'tw-elements';
 initTE({ Tab });
 
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
+// import styles from './Header.module.css'
 
 export default function Header() {
 	return (
@@ -13,8 +14,8 @@ export default function Header() {
 				data-te-nav-ref=""
 			>
 				<li role="home" className="flex-auto text-center">
-					<a
-						href="#pills-home01"
+					<NavLink
+						to="/"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-home-tab01"
 						data-te-toggle="pill"
@@ -25,11 +26,11 @@ export default function Header() {
 						aria-selected="true"
 					>
 						Home
-					</a>
+					</NavLink>
 				</li>
 				<li role="heroes" className="flex-auto text-center">
-					<a
-						href="#pills-heroes01"
+					<NavLink
+						to="/heroes"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-heroes-tab01"
 						data-te-toggle="pill"
@@ -39,11 +40,11 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Heroes
-					</a>
+					</NavLink>
 				</li>
 				<li role="search" className="flex-auto text-center">
-					<a
-						href="#pills-search01"
+					<NavLink
+						to="/search"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-search-tab01"
 						data-te-toggle="pill"
@@ -53,12 +54,12 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Search
-					</a>
+					</NavLink>
 				</li>
 				{/* NOT LOGGED */}
 				<li role="login" className="flex-auto text-center">
-					<a
-						href="#pills-login01"
+					<NavLink
+						to="/login"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-login-tab01"
 						data-te-toggle="pill"
@@ -68,11 +69,11 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Login
-					</a>
+					</NavLink>
 				</li>
 				<li role="register" className="flex-auto text-center">
-					<a
-						href="#pills-register01"
+					<NavLink
+						to="/register"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-register-tab01"
 						data-te-toggle="pill"
@@ -82,12 +83,12 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Register
-					</a>
+					</NavLink>
 				</li>
 				{/*LOGGED */}
 				<li role="add" className="flex-auto text-center">
-					<a
-						href="#pills-add01"
+					<NavLink
+						to="/add"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-add-tab01"
 						data-te-toggle="pill"
@@ -97,11 +98,11 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Add
-					</a>
+					</NavLink>
 				</li>
 				<li role="profile" className="flex-auto text-center">
-					<a
-						href="#pills-profile01"
+					<NavLink
+						to="/profile"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-profile-tab01"
 						data-te-toggle="pill"
@@ -111,11 +112,11 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Profile
-					</a>
+					</NavLink>
 				</li>
 				<li role="logout" className="flex-auto text-center">
-					<a
-						href="#pills-logout01"
+					<NavLink
+						to="/logout"
 						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-logout-tab01"
 						data-te-toggle="pill"
@@ -125,7 +126,7 @@ export default function Header() {
 						aria-selected="false"
 					>
 						Logout
-					</a>
+					</NavLink>
 				</li>
 			</ul>
 		</>
