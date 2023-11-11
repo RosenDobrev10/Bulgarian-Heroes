@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer.jsx';
 import Header from './components/Header/Header.jsx';
 import Home from './components/Home/Home.jsx';
+import NotFound from './components/NotFound/NotFound.jsx';
 
 export default function App() {
 	return (
@@ -18,7 +19,7 @@ export default function App() {
 				{/* <Route path="/login" element={<Login />} /> */}
 				{/* <Route path="/register" element={<Register />} /> */}
 				{/* <Route path="/logout" element={<Logout />} /> */}
-				{/* <Route path="*" element={<NotFound />} /> */}
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<Footer />
 		</>
