@@ -11,6 +11,7 @@ export default function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				{/* <Route path="/heroes" element={<Heroes />} /> */}
+				{/* <Route path="/heroes/:heroId" element={<Details />} /> */}
 				{/* <Route path="/search" element={<Search />} /> */}
 				{/* <Route path="/add" element={<Add />} /> */}
 				{/* <Route path="/profile" element={<Profile />} /> */}
