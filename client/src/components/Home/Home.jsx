@@ -11,7 +11,7 @@ export default function Home() {
 			data-te-ride="carousel"
 		>
 			{/*Carousel indicators*/}
-			<div
+			<div 
 				className="absolute inset-x-0 bottom-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
 				data-te-carousel-indicators=""
 			>
@@ -49,7 +49,7 @@ export default function Home() {
 					data-te-carousel-active=""
 				>
 					<img
-						src="assets/heroes.jpg"
+						src="/assets/heroes.jpg"
 						className="block w-full"
 						alt="Bulgarian Revolutionist"
 					/>
@@ -61,7 +61,7 @@ export default function Home() {
 					data-te-carousel-item="" 
 				>
 					<img
-						src="assets/olympic.jpg"
+						src="/assets/olympic.jpg"
 						className="block w-full"
 						alt="Olympic Gold Medalists" 
 					/>
@@ -73,7 +73,7 @@ export default function Home() {
 					data-te-carousel-item=""
 				>
 					<img
-						src="assets/kings.jpg" 
+						src="/assets/kings.jpg" 
 						className="block w-full" 
 						alt="Bulgarian National Team"
 					/>
