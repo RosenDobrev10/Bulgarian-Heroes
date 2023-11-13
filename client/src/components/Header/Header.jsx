@@ -2,13 +2,14 @@ import { Tab, initTE } from 'tw-elements';
 initTE({ Tab });
 
 import { NavLink } from 'react-router-dom';
+import styles from './Header.module.css';
 
 export default function Header() {
 	return (
 		<>
 			{/*Pills navigation*/}
 			<ul
-				className="mb-1 flex justify-around list-none flex-col flex-wrap pl-4 md:flex-row"
+				className={`${styles.stickyHeader} bg-gray-100 mb-1 flex justify-around list-none flex-col flex-wrap pl-4 md:flex-row`}
 				role="tablist"
 				data-te-nav-ref=""
 			>
