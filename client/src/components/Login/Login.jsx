@@ -14,7 +14,7 @@ export default function Login() {
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
 				<div className="w-full">
 					<p className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}>
-						Log in into your account
+						Влезте в профила си
 					</p>
 					<div className="mt-10">
 						<form className="px-10">
@@ -24,13 +24,13 @@ export default function Login() {
 									htmlFor="email"
 									className="text-neutral-600 text-xl font-semibold"
 								>
-									Email
+									Имейл
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
 										name="email"
-										placeholder="Enter your email"
+										placeholder="Въведете имейл"
 										id="email"
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 									/>
@@ -43,7 +43,7 @@ export default function Login() {
 									htmlFor="password"
 									className="text-neutral-600 text-xl font-semibold"
 								>
-									Password
+									Парола
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
@@ -51,7 +51,7 @@ export default function Login() {
 											showPassword ? 'text' : 'password'
 										}
 										name="password"
-										placeholder="Enter your password"
+										placeholder="Въведете парола"
 										id="password"
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 									/>
@@ -86,14 +86,14 @@ export default function Login() {
 
 							{/* LOGIN BUTTON */}
 							<button className="hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
-								Log in now
+								Влезте сега
 							</button>
 
 							{/* OR */}
 							<div className="relative flex items-center mt-8">
 								<div className="border h-0 w-2/4 border-neutral-600" />
 								<div className=" text-neutral-600 px-4 text-sm font-normal">
-									OR
+									Или
 								</div>
 								<div className=" border h-0 w-2/4 border-neutral-600" />
 							</div>
@@ -103,7 +103,7 @@ export default function Login() {
 								to="/register"
 								className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg text-center text-white text-base font-semibold w-full py-3 mt-9"
 							>
-								Sign up now
+								Регистрирай се сега
 							</Link>
 						</form>
 					</div>

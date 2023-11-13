@@ -21,7 +21,7 @@ export default function Register() {
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}
 					>
-						Register your account
+						Регистрирай се
 					</p>
 					<div className="mt-10">
 						<form className="px-10">
@@ -31,13 +31,13 @@ export default function Register() {
 									htmlFor="email"
 									className="text-neutral-600 text-xl font-semibold"
 								>
-									Email
+									Имейл
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
 										name="email"
-										placeholder="Enter your email"
+										placeholder="Въведете имейл"
 										id="email"
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 									/>
@@ -50,7 +50,7 @@ export default function Register() {
 									htmlFor="password"
 									className="text-neutral-600 text-xl font-semibold"
 								>
-									Password
+									Парола
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
@@ -58,7 +58,7 @@ export default function Register() {
 											showPassword ? 'text' : 'password'
 										}
 										name="password"
-										placeholder="Enter your password"
+										placeholder="Въведете парола"
 										id="password"
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 									/>
@@ -97,7 +97,7 @@ export default function Register() {
 									htmlFor="repass"
 									className="text-neutral-600 text-xl font-semibold"
 								>
-									Confirm Password
+									Потвърди паролата
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
@@ -107,7 +107,7 @@ export default function Register() {
 												: 'password'
 										}
 										name="repass"
-										placeholder="Confirm your password"
+										placeholder="Потвърдете паролата си"
 										id="repass"
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 									/>
@@ -144,14 +144,14 @@ export default function Register() {
 
 							{/* LOGIN BUTTON */}
 							<button className="hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
-								Sign up now
+								Регистрирай се
 							</button>
 
 							{/* OR */}
 							<div className="relative flex items-center mt-8">
 								<div className="border h-0 w-2/4 border-neutral-600" />
 								<div className=" text-neutral-600 px-4 text-sm font-normal">
-									OR
+									Или
 								</div>
 								<div className=" border h-0 w-2/4 border-neutral-600" />
 							</div>
@@ -161,7 +161,7 @@ export default function Register() {
 								to="/login"
 								className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg text-center text-white text-base font-semibold w-full py-3 mt-9"
 							>
-								Log in now
+								Влез
 							</Link>
 						</form>
 					</div>
