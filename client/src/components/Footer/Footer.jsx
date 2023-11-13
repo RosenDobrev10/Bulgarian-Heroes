@@ -1,9 +1,11 @@
+import styles from './Footer.module.css'
+
 export default function Footer() {
 	const currentYear = new Date().getFullYear()
 	return (
 		<>
 			{/*Footer container*/}
-			<footer className="mt-3 flex flex-col items-center text-center text-white">
+			<footer className={`${styles.fixedFooter} mt-3 flex flex-col items-center text-center text-white`}>
 				{/*Copyright section*/}
 				<div className="w-full bg-green-600 p-4 text-center text-white">
 					<p>
