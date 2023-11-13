@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer.jsx';
 
 import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
+import Register from './components/Register/Register.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
 				{/* <Route path="/add" element={<Add />} /> */}
 				{/* <Route path="/profile" element={<Profile />} /> */}
 				<Route path="/login" element={<Login />} />
-				{/* <Route path="/register" element={<Register />} /> */}
+				<Route path="/register" element={<Register />} />
 				{/* <Route path="/logout" element={<Logout />} /> */}
 				<Route path="*" element={<NotFound />} />
 			</Routes>
