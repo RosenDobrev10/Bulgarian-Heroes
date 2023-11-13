@@ -2,7 +2,6 @@ import { Tab, initTE } from 'tw-elements';
 initTE({ Tab });
 
 import { NavLink } from 'react-router-dom';
-// import styles from './Header.module.css'
 
 export default function Header() {
 	return (
