@@ -11,14 +11,13 @@ export default function NotFound() {
 								404
 							</h1>
 							<h1 className="text-6xl font-medium py-8 text-white">
-								Page not found
+								Страницата не е намерена
 							</h1>
 							<p className="text-2xl pb-8 px-12 font-medium text-white">
-								The page you are looking for does not exist. It
-								might have been moved or deleted.
+								Търсената от Вас страница не съществува. Тя може да е била преместена или изтрита.
 							</p>
 							<Link to='/' className="bg-white shadow-2xl hover:bg-gradient-to-b from-white via-green-500 to-red-500 hover:text-white text-green-500 font-semibold px-10 py-3 rounded-md mr-6">
-								HOME
+								НАЧАЛО
 							</Link>
 						</div>
 					</div>

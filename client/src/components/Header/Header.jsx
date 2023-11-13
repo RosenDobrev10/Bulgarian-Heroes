@@ -25,7 +25,7 @@ export default function Header() {
 						aria-controls="pills-home01"
 						aria-selected="true"
 					>
-						Home
+						Начало
 					</NavLink>
 				</li>
 				<li role="heroes" className="flex-auto text-center">
@@ -39,7 +39,7 @@ export default function Header() {
 						aria-controls="pills-heroes01"
 						aria-selected="false"
 					>
-						Heroes
+						Герои
 					</NavLink>
 				</li>
 				<li role="search" className="flex-auto text-center">
@@ -53,7 +53,7 @@ export default function Header() {
 						aria-controls="pills-search01"
 						aria-selected="false"
 					>
-						Search
+						Търси
 					</NavLink>
 				</li>
 				{/* NOT LOGGED */}
@@ -68,7 +68,7 @@ export default function Header() {
 						aria-controls="pills-login01"
 						aria-selected="false"
 					>
-						Login
+						Вход
 					</NavLink>
 				</li>
 				<li role="register" className="flex-auto text-center">
@@ -82,7 +82,7 @@ export default function Header() {
 						aria-controls="pills-register01"
 						aria-selected="false"
 					>
-						Register
+						Регистрация
 					</NavLink>
 				</li>
 				{/*LOGGED */}
@@ -97,7 +97,7 @@ export default function Header() {
 						aria-controls="pills-add01"
 						aria-selected="false"
 					>
-						Add
+						Добави
 					</NavLink>
 				</li>
 				<li role="profile" className="flex-auto text-center">
@@ -111,7 +111,7 @@ export default function Header() {
 						aria-controls="pills-profile01"
 						aria-selected="false"
 					>
-						Profile
+						Профил
 					</NavLink>
 				</li>
 				<li role="logout" className="flex-auto text-center">
@@ -125,7 +125,7 @@ export default function Header() {
 						aria-controls="pills-logout01"
 						aria-selected="false"
 					>
-						Logout
+						Изход
 					</NavLink>
 				</li>
 			</ul>
