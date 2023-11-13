@@ -15,7 +15,7 @@ export default function Header() {
 				<li role="home" className="flex-auto text-center">
 					<NavLink
 						to="/"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-home-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-home01"
@@ -30,7 +30,7 @@ export default function Header() {
 				<li role="heroes" className="flex-auto text-center">
 					<NavLink
 						to="/heroes"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-heroes-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-heroes01"
@@ -44,7 +44,7 @@ export default function Header() {
 				<li role="search" className="flex-auto text-center">
 					<NavLink
 						to="/search"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-search-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-search01"
@@ -59,7 +59,7 @@ export default function Header() {
 				<li role="login" className="flex-auto text-center">
 					<NavLink
 						to="/login"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-login-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-login01"
@@ -73,7 +73,7 @@ export default function Header() {
 				<li role="register" className="flex-auto text-center">
 					<NavLink
 						to="/register"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-register-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-register01"
@@ -88,7 +88,7 @@ export default function Header() {
 				<li role="add" className="flex-auto text-center">
 					<NavLink
 						to="/add"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-add-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-add01"
@@ -102,7 +102,7 @@ export default function Header() {
 				<li role="profile" className="flex-auto text-center">
 					<NavLink
 						to="/profile"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-profile-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-profile01"
@@ -116,7 +116,7 @@ export default function Header() {
 				<li role="logout" className="flex-auto text-center">
 					<NavLink
 						to="/logout"
-						className="my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
 						id="pills-logout-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-logout01"
