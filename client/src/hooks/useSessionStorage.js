@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { tokenName } from '../core/environments/constants.jsx'
+import { tokenName } from '../core/environments/constants.js'
 
 export const useSessionStorage = () => {
 	// User data is saved in context to easy use in app: { _id, username, email }

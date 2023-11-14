@@ -1,3 +1,6 @@
+import { useSessionStorage } from '../../hooks/useSessionStorage.jsx';
+import host from '../environments/constants.js'
+
 async function request(method, url, data) {
 	const options = {
 		method,
@@ -19,7 +22,7 @@ async function request(method, url, data) {
 
 		if (response.ok !== true) {
 			if (response.status === 403) {
-				clearUserData();
+				clearUserToken();
 			}
 			const error = await response.json();
 			throw new Error(error.message);

@@ -1,5 +1,5 @@
-import * as api from './api.jsx';
-import { endpoints } from '../environments/constants.jsx';
+import * as api from './api.js';
+import { endpoints } from '../environments/constants.js';
 
 export async function getAllHeroes() {
 	return api.get(endpoints.getAllHeroes);
