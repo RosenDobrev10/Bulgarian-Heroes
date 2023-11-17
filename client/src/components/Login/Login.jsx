@@ -86,14 +86,14 @@ export default function Login() {
 
 							{/* LOGIN BUTTON */}
 							<button className="hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
-								Влезте сега
+								Влезте
 							</button>
 
 							{/* OR */}
 							<div className="relative flex items-center mt-8">
 								<div className="border h-0 w-2/4 border-neutral-600" />
 								<div className=" text-neutral-600 px-4 text-sm font-normal">
-									Или
+									или
 								</div>
 								<div className=" border h-0 w-2/4 border-neutral-600" />
 							</div>
@@ -103,7 +103,7 @@ export default function Login() {
 								to="/register"
 								className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg text-center text-white text-base font-semibold w-full py-3 mt-9"
 							>
-								Регистрирай се сега
+								Регистрирайте се
 							</Link>
 						</form>
 					</div>
