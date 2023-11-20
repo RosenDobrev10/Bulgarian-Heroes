@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { createContext } from 'react';
-import { useSessionStorage } from '../hooks/useSessionStorage';
+import { useSessionStorage } from '../hooks/useSessionStorage.js';
 
-export const AuthContext = createContext(null); // Create AuthContext
+export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-	// Create auth provider (to use in app only use AuthProvider around the routes)
+	// create AuthProvider so we can use it everywhere in our app(put AuthProvider around all other components)
 	const sessionManager = useSessionStorage();
 
 	const contextValues = {
