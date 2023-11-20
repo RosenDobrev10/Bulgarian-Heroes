@@ -1,6 +1,12 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NotFound() {
+
+	useEffect(() => {
+		document.title = '404';
+	}, []);
+
 	return (
 		<>
 			<div className="bg-gradient-to-b from-white via-green-500 to-red-500">
