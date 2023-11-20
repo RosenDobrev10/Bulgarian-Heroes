@@ -9,10 +9,13 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
 
+import { AuthProvider } from './contexts/AuthContext.jsx';
+
 export default function App() {
 	return (
-		<>
+		<AuthProvider>
 			<Header />
+
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/heroes" element={<Heroes />} />
@@ -25,7 +28,8 @@ export default function App() {
 				{/* <Route path="/logout" element={<Logout />} /> */}
 				<Route path="*" element={<NotFound />} />
 			</Routes>
+			
 			<Footer />
-		</>
+		</AuthProvider>
 	);
 }
