@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 
 export default function Register() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+	useEffect(() => {
+		document.title = 'Регистрация';
+	}, []);
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
