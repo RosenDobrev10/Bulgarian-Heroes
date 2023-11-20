@@ -3,7 +3,7 @@ import CarouselComp from './Carousel/CarouselComp.jsx';
 
 export default function Home() {
 	useEffect(() => {
-		document.title = 'Home';
+		document.title = 'Начало';
 	}, []);
 
 	return <CarouselComp />;
