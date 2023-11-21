@@ -1534,25 +1534,25 @@
 		heroes: {
 			'e797fa57-bf0a-4749-8028-72dba715e5f8': {
 				_id: 'e797fa57-bf0a-4749-8028-72dba715e5f8',
-				name: 'Vasil Levski',
+				name: 'Васил Левски',
 				imageUrl: 'assets/levski.jpg',
-				occupation: 'Revolutionary',
-				birthplace: 'Karlovo',
+				occupation: 'Революционер',
+				birthplace: 'Карлово',
 				born: 1837,
 				description:
-					'Vasil Levski, born Vasil Ivanov Kunchev, was a Bulgarian revolutionary who is, today, a national hero of Bulgaria. Dubbed the Apostle of Freedom, Levski ideologised and strategised a revolutionary movement to liberate Bulgaria from Ottoman rule.',
+					'Васил Левски, роден като Васил Иванов Кунчев, е български революционер, който днес е национален герой на България. Наричан Апостола на свободата, Левски е идеолог и стратег на революционното движение за освобождение на България от османско владичество',
 				_ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
 				_createdOn: 1700500562315
 			},
 			'e232fa57-az0a-4781-9328-72d232gl5e5f': {
 				_id: 'e232fa57-az0a-4781-9328-72d232gl5e5f',
-				name: 'Hristo Botev',
+				name: 'Христо Ботев',
 				imageUrl: 'assets/botev.jpg',
-				occupation: 'Revolutionary',
-				birthplace: 'Kalofer',
+				occupation: 'Революционер',
+				birthplace: 'Калофер',
 				born: 1848,
 				description:
-					'Hristo Botev was a Bulgarian revolutionary and poet. Botev is considered by Bulgarians to be a symbolic historical figure and national hero. His poetry is a prime example of the literature of the Bulgarian National Revival, though he is considered to be ahead of his contemporaries in his political, philosophical, and aesthetic views.',
+					'Христо Ботев е български революционер и поет. Ботев е смятан от българите за емблематична историческа личност и национален герой. Поезията му е ярък пример за литературата на Българското възраждане, въпреки че се смята, че е изпреварил своите съвременници в политическите, философските и естетическите си възгледи.',
 				_ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
 				_createdOn: 1700500562315
 			}
