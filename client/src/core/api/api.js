@@ -29,6 +29,7 @@ async function request(method, url, data) {
 	if (response.status === 204) {	
 		return response;
 	}
+	
 	return response.json();
 }
 
