@@ -11,9 +11,9 @@ export const AuthProvider = ({ children }) => {
 	const contextValues = {
 		addUserSession: (userData) => sessionManager.setUserState(userData),
 		clearUserSession: () => sessionManager.clearUserState(),
-		getUserToken: sessionManager.currentUserToken,
-		getUserDetails: sessionManager.currentUserData,
-		isLoggedIn: !!sessionManager.currentUserToken
+		getUserToken: sessionManager.currentUserData?.accessToken,
+		getUserEmail: sessionManager.currentUserData?.email,
+		isLoggedIn: !!sessionManager.currentUserData?.accessToken
 	};
 
 	return (
