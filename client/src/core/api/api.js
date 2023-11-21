@@ -1,15 +1,14 @@
-import { useSessionStorage } from '../../hooks/useSessionStorage.jsx';
-import host from '../environments/constants.js'
+import { host, tokenName } from '../environments/constants.js';
 
 async function request(method, url, data) {
 	const options = {
 		method,
-		headers: {},
+		headers: {}
 	};
 
-	const token = getAccessToken();
-	if (token) {
-		options.headers['X-Authorization'] = token;
+	const userData = JSON.parse(localStorage.getItem(tokenName));
+	if (userData) {
+		options.headers['X-Authorization'] = userData.accessToken;
 	}
 
 	if (data) {
@@ -17,26 +16,20 @@ async function request(method, url, data) {
 		options.body = JSON.stringify(data);
 	}
 
-	try {
-		const response = await fetch(host + url, options);
+	const response = await fetch(host + url, options);
 
-		if (response.ok !== true) {
-			if (response.status === 403) {
-				clearUserToken();
-			}
-			const error = await response.json();
-			throw new Error(error.message);
+	if (response.ok !== true) {
+		if (response.status === 403) {
+			localStorage.removeItem(tokenName);
 		}
-
-		if (response.status === 204) {
-			return response;
-		} else {
-			return response.json();
-		}
-	} catch (err) {
-		alert(err.message);
-		throw err;
+		const error = await response.json();
+		throw new Error(error.message);
 	}
+
+	if (response.status === 204) {	
+		return response;
+	}
+	return response.json();
 }
 
 export const get = request.bind(null, 'get');
