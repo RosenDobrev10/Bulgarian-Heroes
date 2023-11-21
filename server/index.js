@@ -1541,7 +1541,8 @@
 				born: 1837,
 				description:
 					'Vasil Levski, born Vasil Ivanov Kunchev, was a Bulgarian revolutionary who is, today, a national hero of Bulgaria. Dubbed the Apostle of Freedom, Levski ideologised and strategised a revolutionary movement to liberate Bulgaria from Ottoman rule.',
-				_ownerId: '35c62d76-8152-4626-8712-eeb96381bea8'
+				_ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
+				_createdOn: 1700500562315
 			},
 			'e232fa57-az0a-4781-9328-72d232gl5e5f': {
 				_id: 'e232fa57-az0a-4781-9328-72d232gl5e5f',
@@ -1552,7 +1553,8 @@
 				born: 1848,
 				description:
 					'Hristo Botev was a Bulgarian revolutionary and poet. Botev is considered by Bulgarians to be a symbolic historical figure and national hero. His poetry is a prime example of the literature of the Bulgarian National Revival, though he is considered to be ahead of his contemporaries in his political, philosophical, and aesthetic views.',
-				_ownerId: '847ec027-f659-4086-8032-5173e2f9c93a'
+				_ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
+				_createdOn: 1700500562315
 			}
 		}
 	};
