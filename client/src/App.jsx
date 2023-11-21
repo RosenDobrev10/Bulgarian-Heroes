@@ -1,13 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header.jsx';
-import Footer from './components/Footer/Footer.jsx';
-
 import Home from './components/Home/Home.jsx';
 import Heroes from './components/Heroes/Heroes.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
+import Footer from './components/Footer/Footer.jsx';
 
 import { AuthProvider } from './contexts/AuthContext.jsx';
 
