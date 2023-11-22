@@ -1,10 +1,12 @@
 import { Tab, initTE } from 'tw-elements';
 initTE({ Tab });
-
 import { NavLink } from 'react-router-dom';
+
 import styles from './Header.module.css';
+import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 export default function Header() {
+	const { isLoggedIn } = useAuthContext;
 	return (
 		<>
 			{/*Pills navigation*/}
@@ -56,78 +58,86 @@ export default function Header() {
 						Търси
 					</NavLink>
 				</li>
-				{/* NOT LOGGED */}
-				<li role="login" className="flex-auto text-center">
-					<NavLink
-						to="/login"
-						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
-						id="pills-login-tab01"
-						data-te-toggle="pill"
-						data-te-target="#pills-login01"
-						role="tab"
-						aria-controls="pills-login01"
-						aria-selected="false"
-					>
-						Вход
-					</NavLink>
-				</li>
-				<li role="register" className="flex-auto text-center">
-					<NavLink
-						to="/register"
-						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
-						id="pills-register-tab01"
-						data-te-toggle="pill"
-						data-te-target="#pills-register01"
-						role="tab"
-						aria-controls="pills-register01"
-						aria-selected="false"
-					>
-						Регистрация
-					</NavLink>
-				</li>
-				{/*LOGGED */}
-				<li role="add" className="flex-auto text-center">
-					<NavLink
-						to="/add"
-						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
-						id="pills-add-tab01"
-						data-te-toggle="pill"
-						data-te-target="#pills-add01"
-						role="tab"
-						aria-controls="pills-add01"
-						aria-selected="false"
-					>
-						Добави
-					</NavLink>
-				</li>
-				<li role="profile" className="flex-auto text-center">
-					<NavLink
-						to="/profile"
-						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
-						id="pills-profile-tab01"
-						data-te-toggle="pill"
-						data-te-target="#pills-profile01"
-						role="tab"
-						aria-controls="pills-profile01"
-						aria-selected="false"
-					>
-						Профил
-					</NavLink>
-				</li>
-				<li role="logout" className="flex-auto text-center">
-					<NavLink
-						to="/logout"
-						className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
-						id="pills-logout-tab01"
-						data-te-toggle="pill"
-						data-te-target="#pills-logout01"
-						role="tab"
-						aria-controls="pills-logout01"
-						aria-selected="false"
-					>
-						Изход
-					</NavLink>
-				</li>
+
+				{isLoggedIn ? (
+					<>
+						{/*LOGGED */}
+						<li role="add" className="flex-auto text-center">
+							<NavLink
+								to="/add"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								id="pills-add-tab01"
+								data-te-toggle="pill"
+								data-te-target="#pills-add01"
+								role="tab"
+								aria-controls="pills-add01"
+								aria-selected="false"
+							>
+								Добави
+							</NavLink>
+						</li>
+						<li role="profile" className="flex-auto text-center">
+							<NavLink
+								to="/profile"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								id="pills-profile-tab01"
+								data-te-toggle="pill"
+								data-te-target="#pills-profile01"
+								role="tab"
+								aria-controls="pills-profile01"
+								aria-selected="false"
+							>
+								Профил
+							</NavLink>
+						</li>
+						<li role="logout" className="flex-auto text-center">
+							<NavLink
+								to="/logout"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								id="pills-logout-tab01"
+								data-te-toggle="pill"
+								data-te-target="#pills-logout01"
+								role="tab"
+								aria-controls="pills-logout01"
+								aria-selected="false"
+							>
+								Изход
+							</NavLink>
+						</li>
+					</>
+				) : (
+					<>
+						{/* NOT LOGGED */}
+						<li role="login" className="flex-auto text-center">
+							<NavLink
+								to="/login"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								id="pills-login-tab01"
+								data-te-toggle="pill"
+								data-te-target="#pills-login01"
+								role="tab"
+								aria-controls="pills-login01"
+								aria-selected="false"
+							>
+								Вход
+							</NavLink>
+						</li>
+						<li role="register" className="flex-auto text-center">
+							<NavLink
+								to="/register"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								id="pills-register-tab01"
+								data-te-toggle="pill"
+								data-te-target="#pills-register01"
+								role="tab"
+								aria-controls="pills-register01"
+								aria-selected="false"
+							>
+								Регистрация
+							</NavLink>
+						</li>
+					</>
+				)}
 			</ul>
 		</>
 	);
