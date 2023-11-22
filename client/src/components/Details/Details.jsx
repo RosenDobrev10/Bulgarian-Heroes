@@ -15,7 +15,6 @@ export default function Details() {
 		getHeroById(heroId)
 			.then((data) => {
 				setHero(data);
-				console.log(data);
 				document.title = data.name;
 			})
 			.catch((err) => console.error(err))
