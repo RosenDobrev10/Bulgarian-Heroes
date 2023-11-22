@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Login.module.css'
+import styles from './Login.module.css';
+
+import useForm from '../../hooks/useForm.js';
+import { loginFormKeys } from '../../core/environments/constants.js';
+import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 export default function Login() {
 	const [showPassword, setShowPassword] = useState(false);
+	const { loginSubmitHandler } = useAuthContext();
 
 	useEffect(() => {
 		document.title = 'Вход';
@@ -13,19 +18,26 @@ export default function Login() {
 		setShowPassword(!showPassword);
 	};
 
+	const { formValues, onChange, onSubmit } = useForm(loginSubmitHandler, {
+		[loginFormKeys.email]: '',
+		[loginFormKeys.password]: ''
+	});
+
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
 				<div className="w-full">
-					<p className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}>
+					<p
+						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}
+					>
 						Влезте в профила си
 					</p>
 					<div className="mt-10">
-						<form className="px-10">
+						<form className="px-10" onSubmit={onSubmit}>
 							{/* EMAIL */}
 							<div className="mt-2">
 								<label
-									htmlFor="email"
+									htmlFor={loginFormKeys.email}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Имейл
@@ -33,10 +45,12 @@ export default function Login() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="email"
+										name={loginFormKeys.email}
 										placeholder="Въведете имейл"
-										id="email"
+										id={loginFormKeys.email}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[loginFormKeys.email]}
 									/>
 								</div>
 							</div>
@@ -44,7 +58,7 @@ export default function Login() {
 							{/* PASSWORD */}
 							<div className="mt-6">
 								<label
-									htmlFor="password"
+									htmlFor={loginFormKeys.password}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Парола
@@ -54,10 +68,14 @@ export default function Login() {
 										type={
 											showPassword ? 'text' : 'password'
 										}
-										name="password"
+										name={loginFormKeys.password}
 										placeholder="Въведете парола"
-										id="password"
+										id={loginFormKeys.password}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={
+											formValues[loginFormKeys.password]
+										}
 									/>
 									<button
 										type="button"
@@ -65,7 +83,7 @@ export default function Login() {
 									>
 										{showPassword ? (
 											<svg
-                                                className='pr-3'
+												className="pr-3"
 												fill="green"
 												xmlns="http://www.w3.org/2000/svg"
 												height="1.4em"
@@ -75,7 +93,7 @@ export default function Login() {
 											</svg>
 										) : (
 											<svg
-                                                className='pr-3'
+												className="pr-3"
 												fill="green"
 												xmlns="http://www.w3.org/2000/svg"
 												height="1.4em"
