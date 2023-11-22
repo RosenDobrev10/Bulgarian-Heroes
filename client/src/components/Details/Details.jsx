@@ -16,10 +16,10 @@ export default function Details() {
 
 	useEffect(() => {
 		getHeroById(heroId)
-			.then((data) => {
-				setHero(data);
-				setIsOwner(getUserId === data._ownerId);
-				document.title = data.name;
+			.then((heroData) => {
+				setHero(heroData);
+				setIsOwner(getUserId === heroData._ownerId);
+				document.title = heroData.name;
 			})
 			.catch((err) => console.error(err))
 			.finally(() => setIsLoading(false));
