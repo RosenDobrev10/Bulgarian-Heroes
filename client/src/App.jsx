@@ -4,6 +4,7 @@ import Header from './components/Header/Header.jsx';
 import Home from './components/Home/Home.jsx';
 import Heroes from './components/Heroes/Heroes.jsx';
 import Details from './components/Details/Details.jsx';
+import Add from './components/Add/Add.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
@@ -21,7 +22,7 @@ export default function App() {
 				<Route path="/heroes" element={<Heroes />} />
 				<Route path="/heroes/:heroId" element={<Details />} />
 				{/* <Route path="/search" element={<Search />} /> */}
-				{/* <Route path="/add" element={<Add />} /> */}
+				<Route path="/add" element={<Add />} />
 				{/* <Route path="/profile" element={<Profile />} /> */}
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
