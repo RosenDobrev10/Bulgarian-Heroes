@@ -15,11 +15,10 @@ export const useSessionStorage = () => {
 		return null;
 	});
 
-	const setUserState = ({ accessToken, email, _createdOn, _id }) => {
+	const setUserState = ({ accessToken, email, _id }) => {
 		if (accessToken) {
-			const userData = { accessToken, email, _createdOn, _id };
-			localStorage.setItem(tokenName, JSON.stringify(userData));
-			setCurrentUserData(userData);
+			localStorage.setItem(tokenName, JSON.stringify({ accessToken, email, _id }));
+			setCurrentUserData({ accessToken, email, _id });
 		}
 	};
 
