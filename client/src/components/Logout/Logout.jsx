@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { logout } from '../../core/api/userApi.js';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext.js';
@@ -11,7 +12,7 @@ export default function Logout() {
 		logout()
 			.then(() => logoutHandler())
 			.catch(() => navigate('/'));
-	}, []);
+	}, [logoutHandler, navigate]);
 
 	return null;
 }
