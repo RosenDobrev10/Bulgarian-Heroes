@@ -8,6 +8,7 @@ import Search from './components/Search/Search.jsx';
 import Add from './components/Add/Add.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
+import Logout from './components/Logout/Logout.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
@@ -27,7 +28,7 @@ export default function App() {
 				{/* <Route path="/profile" element={<Profile />} /> */}
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
-				{/* <Route path="/logout" element={<Logout />} /> */}
+				<Route path="/logout" element={<Logout />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			
