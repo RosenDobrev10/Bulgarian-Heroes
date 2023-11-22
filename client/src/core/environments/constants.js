@@ -17,3 +17,14 @@ export const endpoints = {
 };
 
 export const tokenName = '719c660ebedf977ef42a8b11181c52688a3c163d823dceae56e027ef79902615'
+
+export const loginFormKeys = {
+	email: 'email',
+	password: 'password'
+}
+
+export const registerFormKeys = {
+	email: 'email',
+	password: 'password',
+	repass: 'repass'
+}
