@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { tokenName } from '../core/environments/constants.js'
+import { tokenName } from '../core/environments/constants.js';
 
 export const useSessionStorage = () => {
 	// Initial user token is saved in local storage -> can be null or accessToken
 	const [currentUserData, setCurrentUserData] = useState(() => {
 		try {
 			// Verify that the data in the local storage is in the correct format
-			const localStorageData = JSON.parse(localStorage.getItem(tokenName));
+			const localStorageData = JSON.parse(
+				localStorage.getItem(tokenName)
+			);
 			if (localStorageData) {
 				return localStorageData;
 			}
@@ -18,9 +20,9 @@ export const useSessionStorage = () => {
 		return null;
 	});
 
-	const setUserState = (userData) => {
-		// If has a userData set new user state and user data
-		if (userData) {
+	const setUserState = ({ accessToken, email, _createdOn, _id }) => {
+		if (accessToken) {
+			const userData = { accessToken, email, _createdOn, _id };
 			localStorage.setItem(tokenName, JSON.stringify(userData));
 			setCurrentUserData(userData);
 		}
@@ -28,12 +30,12 @@ export const useSessionStorage = () => {
 
 	const clearUserState = () => {
 		localStorage.removeItem(tokenName);
-		setCurrentUserData(null); 
+		setCurrentUserData(null);
 	};
 
 	return {
 		setUserState,
 		clearUserState,
-		currentUserData,
+		currentUserData
 	};
 };
