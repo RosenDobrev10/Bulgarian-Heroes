@@ -13,6 +13,8 @@ import NotFound from './components/NotFound/NotFound.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 import { AuthProvider } from './contexts/AuthContext.jsx';
+import { RouteGuardPublic } from './guards/publicGuard.js';
+import { RouteGuardPrivate } from './guards/privateGuard.js';
 
 export default function App() {
 	return (
@@ -24,14 +26,23 @@ export default function App() {
 				<Route path="/heroes" element={<Heroes />} />
 				<Route path="/heroes/:heroId" element={<Details />} />
 				<Route path="/search" element={<Search />} />
-				<Route path="/add" element={<Add />} />
-				{/* <Route path="/profile" element={<Profile />} /> */}
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-				<Route path="/logout" element={<Logout />} />
 				<Route path="*" element={<NotFound />} />
+
+				{/* PRIVATE ROUTES */}
+				<Route element={<RouteGuardPrivate />}>
+					<Route path="/add" element={<Add />} />
+					{/* <Route path="/profile" element={<Profile />} /> */}
+					<Route path="/logout" element={<Logout />} />
+				</Route>
+
+				{/* PUBLIC ROUTES */}
+				<Route element={<RouteGuardPublic />}>
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+				</Route>
+
 			</Routes>
-			
+
 			<Footer />
 		</AuthProvider>
 	);
