@@ -1,9 +1,34 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { createFormKeys } from '../../core/environments/constants.js';
+import useForm from '../../hooks/useForm.js';
+import { createHero } from '../../core/api/heroesApi.js';
 
 export default function Add() {
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		document.title = 'Добави';
 	}, []);
+
+	const createSubmitHandler = async (formValues) => {
+		try {
+			await createHero(formValues);
+			navigate('/heroes');
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
+	const { formValues, onChange, onSubmit } = useForm(createSubmitHandler, {
+		[createFormKeys.name]: '',
+		[createFormKeys.imageUrl]: '',
+		[createFormKeys.occupation]: '',
+		[createFormKeys.birthplace]: '',
+		[createFormKeys.born]: '',
+		[createFormKeys.description]: ''
+	});
 
 	return (
 		<>
@@ -13,11 +38,11 @@ export default function Add() {
 						Добави герой
 					</p>
 					<div className="mt-10">
-						<form className="px-10">
+						<form className="px-10" onSubmit={onSubmit}>
 							{/* NAME */}
 							<div className="mt-2">
 								<label
-									htmlFor="name"
+									htmlFor={createFormKeys.name}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Име
@@ -25,10 +50,12 @@ export default function Add() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="name"
+										name={createFormKeys.name}
 										placeholder="Въведете име"
-										id="name"
+										id={createFormKeys.name}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[createFormKeys.name]}
 									/>
 								</div>
 							</div>
@@ -36,7 +63,7 @@ export default function Add() {
 							{/* IMAGE URL */}
 							<div className="mt-6">
 								<label
-									htmlFor="imageUrl"
+									htmlFor={createFormKeys.imageUrl}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Линк към снимка
@@ -44,10 +71,14 @@ export default function Add() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="imageUrl"
+										name={createFormKeys.imageUrl}
 										placeholder="Въведете линк към снимка"
-										id="imageUrl"
+										id={createFormKeys.imageUrl}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={
+											formValues[createFormKeys.imageUrl]
+										}
 									/>
 								</div>
 							</div>
@@ -55,7 +86,7 @@ export default function Add() {
 							{/* OCCUPATION */}
 							<div className="mt-6">
 								<label
-									htmlFor="occupation"
+									htmlFor={createFormKeys.occupation}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Дейност
@@ -63,10 +94,16 @@ export default function Add() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="occupation"
+										name={createFormKeys.occupation}
 										placeholder="Въведете дейност"
-										id="occupation"
+										id={createFormKeys.occupation}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={
+											formValues[
+												createFormKeys.occupation
+											]
+										}
 									/>
 								</div>
 							</div>
@@ -74,7 +111,7 @@ export default function Add() {
 							{/* BIRTHPLACE */}
 							<div className="mt-6">
 								<label
-									htmlFor="birthplace"
+									htmlFor={createFormKeys.birthplace}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Родно място
@@ -82,10 +119,16 @@ export default function Add() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="birthplace"
+										name={createFormKeys.birthplace}
 										placeholder="Въведете родно място"
-										id="birthplace"
+										id={createFormKeys.birthplace}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={
+											formValues[
+												createFormKeys.birthplace
+											]
+										}
 									/>
 								</div>
 							</div>
@@ -93,7 +136,7 @@ export default function Add() {
 							{/* BORN */}
 							<div className="mt-6">
 								<label
-									htmlFor="born"
+									htmlFor={createFormKeys.born}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Година на раждане
@@ -101,10 +144,12 @@ export default function Add() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="born"
+										name={createFormKeys.born}
 										placeholder="Въведете година на раждане"
-										id="born"
+										id={createFormKeys.born}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[createFormKeys.born]}
 									/>
 								</div>
 							</div>
@@ -112,17 +157,23 @@ export default function Add() {
 							{/* DESCRIPTION */}
 							<div className="mt-6">
 								<label
-									htmlFor="description"
+									htmlFor={createFormKeys.description}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Кратко описание
 								</label>
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<textarea
-										name="description"
+										name={createFormKeys.description}
 										placeholder="Въведете кратко описание"
-										id="description"
+										id={createFormKeys.description}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={
+											formValues[
+												createFormKeys.description
+											]
+										}
 									></textarea>
 								</div>
 							</div>
