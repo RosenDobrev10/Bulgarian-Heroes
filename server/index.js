@@ -1535,7 +1535,7 @@
 			'e797fa57-bf0a-4749-8028-72dba715e5f8': {
 				_id: 'e797fa57-bf0a-4749-8028-72dba715e5f8',
 				name: 'Васил Левски',
-				imageUrl: 'assets/levski.jpg',
+				imageUrl: '/assets/levski.jpg',
 				occupation: 'Революционер',
 				birthplace: 'Карлово',
 				born: 1837,
@@ -1547,7 +1547,7 @@
 			'e232fa57-az0a-4781-9328-72d232gl5e5f': {
 				_id: 'e232fa57-az0a-4781-9328-72d232gl5e5f',
 				name: 'Христо Ботев',
-				imageUrl: 'assets/botev.jpg',
+				imageUrl: '/assets/botev.jpg',
 				occupation: 'Революционер',
 				birthplace: 'Калофер',
 				born: 1848,
