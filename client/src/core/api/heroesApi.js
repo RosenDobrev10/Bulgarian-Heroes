@@ -10,7 +10,7 @@ export async function createHero(heroData) {
 }
 
 export async function getHeroById(heroId) {
-	return api.get(endpoints.details(heroId));
+	return api.get(endpoints.getHeroById(heroId));
 }
 
 export async function deleteHeroById(heroId) {
