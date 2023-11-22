@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
 		clearUserSession: () => sessionManager.clearUserState(),
 		getUserToken: sessionManager.currentUserData?.accessToken,
 		getUserEmail: sessionManager.currentUserData?.email,
+		getUserId: sessionManager.currentUserData?._id,
 		isLoggedIn: !!sessionManager.currentUserData?.accessToken,
 		loginSubmitHandler,
 		registerSubmitHandler,
