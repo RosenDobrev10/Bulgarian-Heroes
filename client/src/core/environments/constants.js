@@ -28,3 +28,12 @@ export const registerFormKeys = {
 	password: 'password',
 	repass: 'repass'
 }
+
+export const createFormKeys = {
+	name: 'name',
+	imageUrl: 'imageUrl',
+	occupation: 'occupation',
+	birthplace: 'birthplace',
+	born: 'born',
+	description: 'description',
+}
