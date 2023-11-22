@@ -21,7 +21,7 @@ export const useSessionStorage = () => {
 	const setUserState = (userData) => {
 		// If has a userData set new user state and user data
 		if (userData) {
-			localStorage.setItem(tokenName, JSON.stringify(userData.accessToken));
+			localStorage.setItem(tokenName, JSON.stringify(userData));
 			setCurrentUserData(userData);
 		}
 	};
