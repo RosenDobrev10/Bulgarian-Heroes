@@ -2,13 +2,9 @@ import { useState } from 'react';
 import { tokenName } from '../core/environments/constants.js';
 
 export const useSessionStorage = () => {
-	// Initial user token is saved in local storage -> can be null or accessToken
 	const [currentUserData, setCurrentUserData] = useState(() => {
 		try {
-			// Verify that the data in the local storage is in the correct format
-			const localStorageData = JSON.parse(
-				localStorage.getItem(tokenName)
-			);
+			const localStorageData = JSON.parse(localStorage.getItem(tokenName));
 			if (localStorageData) {
 				return localStorageData;
 			}
@@ -16,7 +12,6 @@ export const useSessionStorage = () => {
 			console.error(error);
 			return null;
 		}
-		// Default value
 		return null;
 	});
 
@@ -34,8 +29,8 @@ export const useSessionStorage = () => {
 	};
 
 	return {
+		currentUserData,
 		setUserState,
 		clearUserState,
-		currentUserData
 	};
 };
