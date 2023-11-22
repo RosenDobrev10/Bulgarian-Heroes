@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { useAuthContext } from '../hooks/useAuthContext';
 
-export const RoutGuardAuthenticated = ({ children }) => {
+export const RouteGuardPrivate = ({ children }) => {
 	const { isLoggedIn } = useAuthContext();
 
 	if (!isLoggedIn) {
