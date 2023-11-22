@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 export default function Header() {
-	const { isLoggedIn } = useAuthContext;
+	const { isLoggedIn, getUserEmail} = useAuthContext();
 	return (
 		<>
 			{/*Pills navigation*/}
@@ -87,7 +87,7 @@ export default function Header() {
 								aria-controls="pills-profile01"
 								aria-selected="false"
 							>
-								Профил
+								{getUserEmail}
 							</NavLink>
 						</li>
 						<li role="logout" className="flex-auto text-center">
