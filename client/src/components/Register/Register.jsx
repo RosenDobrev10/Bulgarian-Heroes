@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 
+import useForm from '../../hooks/useForm.js';
+import { registerFormKeys } from '../../core/environments/constants.js';
+import { useAuthContext } from '../../hooks/useAuthContext.js';
+
+
 export default function Register() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+	const { registerSubmitHandler } = useAuthContext();
 
 	useEffect(() => {
 		document.title = 'Регистрация';
@@ -18,6 +24,12 @@ export default function Register() {
 		setShowConfirmPassword(!showConfirmPassword);
 	};
 
+	const { formValues, onChange, onSubmit } = useForm(registerSubmitHandler, {
+		[registerFormKeys.email]: '',
+		[registerFormKeys.password]: '',
+		[registerFormKeys.repass]: '',
+	});
+
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
@@ -28,11 +40,11 @@ export default function Register() {
 						Регистрирайте се
 					</p>
 					<div className="mt-10">
-						<form className="px-10">
+						<form className="px-10" onSubmit={onSubmit}>
 							{/* EMAIL */}
 							<div className="mt-2">
 								<label
-									htmlFor="email"
+									htmlFor={registerFormKeys.email}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Имейл
@@ -40,10 +52,12 @@ export default function Register() {
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name="email"
+										name={registerFormKeys.email}
 										placeholder="Въведете имейл"
-										id="email"
+										id={registerFormKeys.email}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[registerFormKeys.email]}
 									/>
 								</div>
 							</div>
@@ -51,7 +65,7 @@ export default function Register() {
 							{/* PASSWORD */}
 							<div className="mt-6">
 								<label
-									htmlFor="password"
+									htmlFor={registerFormKeys.password}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Парола
@@ -61,10 +75,12 @@ export default function Register() {
 										type={
 											showPassword ? 'text' : 'password'
 										}
-										name="password"
+										name={registerFormKeys.password}
 										placeholder="Въведете парола"
-										id="password"
+										id={registerFormKeys.password}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[registerFormKeys.password]}
 									/>
 									<button
 										type="button"
@@ -98,7 +114,7 @@ export default function Register() {
 							{/* REPEAT PASSWORD */}
 							<div className="mt-6">
 								<label
-									htmlFor="repass"
+									htmlFor={registerFormKeys.repass}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Потвърди паролата
@@ -110,10 +126,12 @@ export default function Register() {
 												? 'text'
 												: 'password'
 										}
-										name="repass"
+										name={registerFormKeys.repass}
 										placeholder="Потвърдете паролата си"
-										id="repass"
+										id={registerFormKeys.repass}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
+										onChange={onChange}
+										value={formValues[registerFormKeys.repass]}
 									/>
 									<button
 										type="button"
