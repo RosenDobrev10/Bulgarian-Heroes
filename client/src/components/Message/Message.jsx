@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { Toast, initTE } from 'tw-elements';
 
-export default function Message({ errorMessage }) {
+export default function Message({ serverErrorMessage }) {
 	useEffect(() => {
 		initTE({ Toast });
 	}, []);
@@ -49,7 +49,7 @@ export default function Message({ errorMessage }) {
 				</div>
 			</div>
 			<div className="break-words rounded-b-lg bg-danger-100 px-4 py-4 text-danger-700">
-				{errorMessage}
+				{serverErrorMessage}
 			</div>
 		</div>
 	);
