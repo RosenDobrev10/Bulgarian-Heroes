@@ -6,6 +6,8 @@ import useForm from '../../hooks/useForm.js';
 import { registerFormKeys } from '../../core/environments/constants.js';
 import { useAuthContext } from '../../hooks/useAuthContext.js';
 
+import Message from '../Message/Message.jsx';
+
 
 export default function Register() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +26,7 @@ export default function Register() {
 		setShowConfirmPassword(!showConfirmPassword);
 	};
 
-	const { formValues, onChange, onSubmit } = useForm(registerSubmitHandler, {
+	const { formValues, errorMessage, isLoading, onChange, onSubmit } = useForm(registerSubmitHandler, {
 		[registerFormKeys.email]: '',
 		[registerFormKeys.password]: '',
 		[registerFormKeys.repass]: '',
@@ -33,6 +35,7 @@ export default function Register() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
+			{(!isLoading && errorMessage) && <Message errorMessage={errorMessage} />}
 				<div className="w-full">
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}

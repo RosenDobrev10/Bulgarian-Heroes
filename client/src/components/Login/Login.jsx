@@ -5,6 +5,7 @@ import styles from './Login.module.css';
 import useForm from '../../hooks/useForm.js';
 import { loginFormKeys } from '../../core/environments/constants.js';
 import { useAuthContext } from '../../hooks/useAuthContext.js';
+import Message from '../Message/Message.jsx';
 
 export default function Login() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -18,14 +19,18 @@ export default function Login() {
 		setShowPassword(!showPassword);
 	};
 
-	const { formValues, onChange, onSubmit } = useForm(loginSubmitHandler, {
-		[loginFormKeys.email]: '',
-		[loginFormKeys.password]: ''
-	});
+	const { formValues, errorMessage, isLoading, onChange, onSubmit } = useForm(
+		loginSubmitHandler,
+		{
+			[loginFormKeys.email]: '',
+			[loginFormKeys.password]: ''
+		}
+	);
 
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
+				{(!isLoading && errorMessage) && <Message errorMessage={errorMessage} />}
 				<div className="w-full">
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}

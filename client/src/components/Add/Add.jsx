@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { createFormKeys } from '../../core/environments/constants.js';
 import useForm from '../../hooks/useForm.js';
 import { createHero } from '../../core/api/heroesApi.js';
+import Message from '../Message/Message.jsx';
 
 export default function Add() {
 	const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function Add() {
 		}
 	};
 
-	const { formValues, onChange, onSubmit } = useForm(createSubmitHandler, {
+	const { formValues, errorMessage, isLoading, onChange, onSubmit } = useForm(createSubmitHandler, {
 		[createFormKeys.name]: '',
 		[createFormKeys.imageUrl]: '',
 		[createFormKeys.occupation]: '',
@@ -33,6 +34,7 @@ export default function Add() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
+			{(!isLoading && errorMessage) && <Message errorMessage={errorMessage} />}
 				<div className="w-full">
 					<p className="tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold">
 						Добави герой
