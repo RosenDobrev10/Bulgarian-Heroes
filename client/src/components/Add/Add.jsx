@@ -179,7 +179,7 @@ export default function Add() {
 							</div>
 
 							{/* ADD BUTTON */}
-							<button className="hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
+							<button className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
 								Добави
 							</button>
 						</form>
