@@ -13,8 +13,8 @@ import NotFound from './components/NotFound/NotFound.jsx';
 import Footer from './components/Footer/Footer.jsx';
 
 import { AuthProvider } from './contexts/AuthContext.jsx';
-import { RouteGuardPublic } from './guards/publicGuard.js';
-import { RouteGuardPrivate } from './guards/privateGuard.js';
+import { RouteGuardPublic } from './guards/publicGuard.jsx';
+import { RouteGuardPrivate } from './guards/privateGuard.jsx';
 
 export default function App() {
 	return (
@@ -39,7 +39,7 @@ export default function App() {
 				<Route element={<RouteGuardPublic />}>
 					<Route path="/login" element={<Login />} />
 					<Route path="/register" element={<Register />} />
-				</Route>
+				</Route> 
 
 			</Routes>
 
