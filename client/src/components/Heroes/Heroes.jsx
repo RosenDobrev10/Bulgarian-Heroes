@@ -6,27 +6,31 @@ import Spinner from '../Spinner/Spinner.jsx';
 import Hero from './Hero/Hero.jsx';
 
 import { Animate, initTE } from 'tw-elements';
-
+import Message from '../Message/Message.jsx';
 initTE({ Animate });
 
 export default function Heroes() {
 	const [heroes, setHeroes] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	useEffect(() => {
 		document.title = 'Герои';
 		getAllHeroes()
 			.then((data) => setHeroes(data))
-			.catch((err) => console.error(err))
+			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 	}, []);
 
 	return (
 		<>
 			{isLoading && <Spinner />}
-			<ul className="flex flex-wrap justify-around my-3">
+
+			{errorMessage && <Message errorMessage={errorMessage} />}
+			
+			<ul className="flex gap-1 flex-wrap justify-between m-5">
 				{heroes.map((hero) => (
-					<li key={hero._id} className="w-1/3 h-auto">
+					<li key={hero._id} className="w-5/12 h-auto">
 						<Hero {...hero} />
 					</li>
 				))}
