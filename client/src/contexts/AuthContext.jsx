@@ -13,35 +13,23 @@ export const AuthProvider = ({ children }) => {
 	const navigate = useNavigate();
 
 	const loginSubmitHandler = async (formValues) => {
-		try {
-			const result = await login(formValues.email, formValues.password);
-			sessionManager.setUserState(result);
-			navigate('/heroes');
-		} catch (error) {
-			console.log(error.message);
-		}
+		const result = await login(formValues.email, formValues.password);
+		sessionManager.setUserState(result);
+		navigate('/heroes');
 	};
 
 	const registerSubmitHandler = async (formValues) => {
-		try {
-			if (formValues.password === formValues.repass) {
-				const result = await register(formValues.email, formValues.password);
-				sessionManager.setUserState(result);
-				navigate('/heroes');
-			}
-		} catch (error) {
-			console.log(error.message);
+		if (formValues.password === formValues.repass) {
+			const result = await register(formValues.email, formValues.password);
+			sessionManager.setUserState(result);
+			navigate('/heroes');
 		}
 	};
 
 	const logoutHandler = async () => {
-		try {
-			await logout();
-			sessionManager.clearUserState();
-			navigate('/login');
-		} catch (error) {
-			console.log(error);
-		}
+		await logout();
+		sessionManager.clearUserState();
+		navigate('/login');
 	};
 
 	const contextValues = {
