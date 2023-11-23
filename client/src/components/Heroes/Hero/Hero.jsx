@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
+import styles from './Hero.module.css'
 
 import { Ripple, initTE } from 'tw-elements';
 initTE({ Ripple });
@@ -26,7 +27,7 @@ export default function Hero({ _id, name, imageUrl, description, }) {
 					<h5 className="mb-2 text-xl font-medium leading-tight text-white">
 						{name}
 					</h5>
-					<p className="mb-4 text-base text-white">{description}</p>
+					<p className={`${styles.rowLength} mb-4 text-base text-white overflow-ellipsis`}>{description}</p>
 					<div className='flex justify-between'>
 						<p className="mb-4 text-base text-white">
 							Харесвания:
