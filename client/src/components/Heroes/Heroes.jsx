@@ -28,7 +28,7 @@ export default function Heroes() {
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
 			
-			<ul className="flex gap-1 flex-wrap justify-between m-5">
+			<ul className="flex gap-10 flex-wrap justify-between m-5">
 				{heroes.map((hero) => (
 					<li key={hero._id} className="w-5/12 h-auto">
 						<Hero {...hero} />
