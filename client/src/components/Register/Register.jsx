@@ -7,6 +7,7 @@ import { registerFormKeys } from '../../core/environments/constants.js';
 import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 import Message from '../Message/Message.jsx';
+import registerValidation from './registerValidation.js';
 
 
 export default function Register() {
@@ -26,16 +27,16 @@ export default function Register() {
 		setShowConfirmPassword(!showConfirmPassword);
 	};
 
-	const { formValues, errorMessage, isLoading, onChange, onSubmit } = useForm(registerSubmitHandler, {
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(registerSubmitHandler, {
 		[registerFormKeys.email]: '',
 		[registerFormKeys.password]: '',
 		[registerFormKeys.repass]: '',
-	});
+	}, registerValidation);
 
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
-			{(!isLoading && errorMessage) && <Message errorMessage={errorMessage} />}
+			{(!isLoading && serverErrorMessage) && <Message serverErrorMessage={serverErrorMessage} />}
 				<div className="w-full">
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}
@@ -45,13 +46,35 @@ export default function Register() {
 					<div className="mt-10">
 						<form className="px-10" onSubmit={onSubmit}>
 							{/* EMAIL */}
-							<div className="mt-2">
+							<div className="relative mt-2">
 								<label
 									htmlFor={registerFormKeys.email}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Имейл
 								</label>
+								{formErrorMessage.email && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.email}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
@@ -60,29 +83,51 @@ export default function Register() {
 										id={registerFormKeys.email}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={formValues[registerFormKeys.email]}
 									/>
 								</div>
 							</div>
 
 							{/* PASSWORD */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
 									htmlFor={registerFormKeys.password}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Парола
 								</label>
+								{formErrorMessage.password && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.password}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
-										type={
-											showPassword ? 'text' : 'password'
-										}
+										type={showPassword ? 'text' : 'password'}
 										name={registerFormKeys.password}
 										placeholder="Въведете парола"
 										id={registerFormKeys.password}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={formValues[registerFormKeys.password]}
 									/>
 									<button
@@ -115,32 +160,49 @@ export default function Register() {
 							</div>
 
 							{/* REPEAT PASSWORD */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
 									htmlFor={registerFormKeys.repass}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Потвърди паролата
 								</label>
+								{(formErrorMessage.repass || formValues.password !== formValues.repass) && formValues.repass !== '' && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.repass ? formErrorMessage.repass : 'Паролите не съвпадат!'}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
-										type={
-											showConfirmPassword
-												? 'text'
-												: 'password'
-										}
+										type={showConfirmPassword ? 'text' : 'password'}
 										name={registerFormKeys.repass}
 										placeholder="Потвърдете паролата си"
 										id={registerFormKeys.repass}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={formValues[registerFormKeys.repass]}
 									/>
 									<button
 										type="button"
-										onClick={
-											toggleConfirmPasswordVisibility
-										}
+										onClick={toggleConfirmPasswordVisibility}
 									>
 										{showConfirmPassword ? (
 											<svg
