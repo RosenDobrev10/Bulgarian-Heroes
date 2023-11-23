@@ -29,7 +29,7 @@ export const registerFormKeys = {
 	repass: 'repass'
 }
 
-export const createFormKeys = {
+export const addFormKeys = {
 	name: 'name',
 	imageUrl: 'imageUrl',
 	occupation: 'occupation',
