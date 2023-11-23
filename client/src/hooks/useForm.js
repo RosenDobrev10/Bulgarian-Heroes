@@ -15,7 +15,6 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 
 	const onBlur = (e) => {
 		const currentErrors = validateFunction(e.target.name, e.target.value);
-		console.log(currentErrors);
 		setFormErrorMessage((state) => ({ ...state, ...currentErrors }));
 	};
 
