@@ -1,14 +1,19 @@
+import { useEffect } from 'react';
 import { Carousel, initTE } from 'tw-elements';
-initTE({ Carousel });
 import styles from './CarouselComp.module.css';
 
 export default function CarouselComp() {
+	useEffect(() => {
+		initTE({ Carousel });
+	}, []);
+
 	return (
 		<div
 			id="carouselExampleIndicators"
 			className="relative"
-			data-te-carousel-init=""
+			data-te-carousel-init
 			data-te-ride="carousel"
+			data-te-interval="3000"
 		>
 			{/*Carousel indicators*/}
 			<div
@@ -19,7 +24,7 @@ export default function CarouselComp() {
 					type="button"
 					data-te-target="#carouselExampleIndicators"
 					data-te-slide-to={0}
-					data-te-carousel-active=""
+					data-te-carousel-active
 					className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
 					aria-current="true "
 					aria-label="Slide 1"
@@ -46,8 +51,8 @@ export default function CarouselComp() {
 				{/*First item*/}
 				<div
 					className="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-					data-te-carousel-item=""
-					data-te-carousel-active=""
+					data-te-carousel-item
+					data-te-carousel-active
 				>
 					<img
 						src="/assets/heroes.jpg"
@@ -58,7 +63,7 @@ export default function CarouselComp() {
 				{/*Second item*/}
 				<div
 					className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-					data-te-carousel-item=""
+					data-te-carousel-item
 				>
 					<img
 						src="/assets/olympic.jpg"
@@ -69,7 +74,7 @@ export default function CarouselComp() {
 				{/*Third item*/}
 				<div
 					className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-					data-te-carousel-item=""
+					data-te-carousel-item
 				>
 					<img
 						src="/assets/kings.jpg"
