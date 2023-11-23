@@ -12,7 +12,7 @@ export default function Details() {
 	const [isOwner, setIsOwner] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const { heroId } = useParams();
-	const { getUserId } = useAuthContext();
+	const { getUserId, isLoggedIn } = useAuthContext();
 
 	useEffect(() => {
 		getHeroById(heroId)
@@ -50,28 +50,29 @@ export default function Details() {
 					<p className="mb-4 text-base text-white ">
 						Добавен преди {formatDateToTimeAgo(hero._createdOn)}.
 					</p>
-					{isOwner ? (
-						<>
-							<div className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
-								<Link className="lg:text-sm text-lg font-bold">
-									Изтрий
-								</Link>
-							</div>
-							<div className="hover:drop-shadow-lg hover:opacity-80 bg-yellow-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl text-center text-white shadow-xl">
-								<Link className="lg:text-sm text-lg font-bold">
-									Промени
-								</Link>
-							</div>
-						</>
-					) : (
-						<>
-							<div className="hover:drop-shadow-lg hover:opacity-80 bg-blue-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
-								<Link className="lg:text-sm text-lg font-bold">
-									Харесай
-								</Link>
-							</div>
-						</>
-					)}
+					{isLoggedIn &&
+						(isOwner ? (
+							<>
+								<div className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
+									<Link className="lg:text-sm text-lg font-bold">
+										Изтрий
+									</Link>
+								</div>
+								<div className="hover:drop-shadow-lg hover:opacity-80 bg-yellow-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl text-center text-white shadow-xl">
+									<Link className="lg:text-sm text-lg font-bold">
+										Промени
+									</Link>
+								</div>
+							</>
+						) : (
+							<>
+								<div className="hover:drop-shadow-lg hover:opacity-80 bg-blue-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
+									<Link className="lg:text-sm text-lg font-bold">
+										Харесай
+									</Link>
+								</div>
+							</>
+						))}
 				</div>
 			</div>
 		</>
