@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { createFormKeys } from '../../core/environments/constants.js';
+import { addFormKeys } from '../../core/environments/constants.js';
 import useForm from '../../hooks/useForm.js';
 import { createHero } from '../../core/api/heroesApi.js';
 import Message from '../Message/Message.jsx';
+import addValidation from './addValidation.js';
 
 export default function Add() {
 	const navigate = useNavigate();
@@ -22,14 +23,14 @@ export default function Add() {
 		}
 	};
 
-	const { formValues, serverErrorMessage, isLoading, onChange, onSubmit } = useForm(createSubmitHandler, {
-		[createFormKeys.name]: '',
-		[createFormKeys.imageUrl]: '',
-		[createFormKeys.occupation]: '',
-		[createFormKeys.birthplace]: '',
-		[createFormKeys.born]: '',
-		[createFormKeys.description]: ''
-	});
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(createSubmitHandler, {
+		[addFormKeys.name]: '',
+		[addFormKeys.imageUrl]: '',
+		[addFormKeys.occupation]: '',
+		[addFormKeys.birthplace]: '',
+		[addFormKeys.born]: '',
+		[addFormKeys.description]: ''
+	}, addValidation);
 
 	return (
 		<>
@@ -42,68 +43,137 @@ export default function Add() {
 					<div className="mt-10">
 						<form className="px-10" onSubmit={onSubmit}>
 							{/* NAME */}
-							<div className="mt-2">
+							<div className="relative mt-2">
 								<label
-									htmlFor={createFormKeys.name}
+									htmlFor={addFormKeys.name}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Име
 								</label>
+								{formErrorMessage.name && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.name}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name={createFormKeys.name}
+										name={addFormKeys.name}
 										placeholder="Въведете име"
-										id={createFormKeys.name}
+										id={addFormKeys.name}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
-										value={formValues[createFormKeys.name]}
+										onBlur={onBlur}
+										value={formValues[addFormKeys.name]}
 									/>
 								</div>
 							</div>
 
 							{/* IMAGE URL */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
-									htmlFor={createFormKeys.imageUrl}
+									htmlFor={addFormKeys.imageUrl}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Линк към снимка
 								</label>
+								{formErrorMessage.imageUrl && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.imageUrl}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name={createFormKeys.imageUrl}
+										name={addFormKeys.imageUrl}
 										placeholder="Въведете линк към снимка"
-										id={createFormKeys.imageUrl}
+										id={addFormKeys.imageUrl}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={
-											formValues[createFormKeys.imageUrl]
+											formValues[addFormKeys.imageUrl]
 										}
 									/>
 								</div>
 							</div>
 
 							{/* OCCUPATION */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
-									htmlFor={createFormKeys.occupation}
+									htmlFor={addFormKeys.occupation}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Дейност
 								</label>
+								{formErrorMessage.occupation && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.occupation}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name={createFormKeys.occupation}
+										name={addFormKeys.occupation}
 										placeholder="Въведете дейност"
-										id={createFormKeys.occupation}
+										id={addFormKeys.occupation}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={
 											formValues[
-												createFormKeys.occupation
+												addFormKeys.occupation
 											]
 										}
 									/>
@@ -111,24 +181,47 @@ export default function Add() {
 							</div>
 
 							{/* BIRTHPLACE */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
-									htmlFor={createFormKeys.birthplace}
+									htmlFor={addFormKeys.birthplace}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Родно място
 								</label>
+								{formErrorMessage.birthplace && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.birthplace}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name={createFormKeys.birthplace}
+										name={addFormKeys.birthplace}
 										placeholder="Въведете родно място"
-										id={createFormKeys.birthplace}
+										id={addFormKeys.birthplace}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={
 											formValues[
-												createFormKeys.birthplace
+												addFormKeys.birthplace
 											]
 										}
 									/>
@@ -136,44 +229,90 @@ export default function Add() {
 							</div>
 
 							{/* BORN */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
-									htmlFor={createFormKeys.born}
+									htmlFor={addFormKeys.born}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Година на раждане
 								</label>
+								{formErrorMessage.born && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.born}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
 										type="text"
-										name={createFormKeys.born}
+										name={addFormKeys.born}
 										placeholder="Въведете година на раждане"
-										id={createFormKeys.born}
+										id={addFormKeys.born}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
-										value={formValues[createFormKeys.born]}
+										onBlur={onBlur}
+										value={formValues[addFormKeys.born]}
 									/>
 								</div>
 							</div>
 
 							{/* DESCRIPTION */}
-							<div className="mt-6">
+							<div className="relative mt-6">
 								<label
-									htmlFor={createFormKeys.description}
+									htmlFor={addFormKeys.description}
 									className="text-neutral-600 text-xl font-semibold"
 								>
 									Кратко описание
 								</label>
+								{formErrorMessage.description && (
+									<div
+										className="absolute right-0 top-0 inline-flex items-center rounded-lg bg-danger-100 p-1 text-base text-danger-700"
+										role="alert"
+									>
+										<span className="mr-2">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												className="h-5 w-5"
+											>
+												<path
+													fillRule="evenodd"
+													d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+													clipRule="evenodd"
+												/>
+											</svg>
+										</span>
+										{formErrorMessage.description}
+									</div>
+								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<textarea
-										name={createFormKeys.description}
+										name={addFormKeys.description}
 										placeholder="Въведете кратко описание"
-										id={createFormKeys.description}
+										id={addFormKeys.description}
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
+										onBlur={onBlur}
 										value={
 											formValues[
-												createFormKeys.description
+												addFormKeys.description
 											]
 										}
 									></textarea>
