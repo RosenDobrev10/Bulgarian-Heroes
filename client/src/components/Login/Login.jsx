@@ -8,7 +8,6 @@ import { useAuthContext } from '../../hooks/useAuthContext.js';
 
 import Message from '../Message/Message.jsx';
 import loginValidation from './loginValidation.js';
-// import loginValidation from './loginValidation.js';
 
 export default function Login() {
 	const [showPassword, setShowPassword] = useState(false);
