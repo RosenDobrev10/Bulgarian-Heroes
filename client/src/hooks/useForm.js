@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 export default function useForm(submitHandler, initialValues) {
 	const [formValues, setFormValues] = useState(initialValues);
+	const [errorMessage, setErrorMessage] = useState('');
+	const [isLoading, setIsLoading] = useState(false)
 
 	const onChange = (e) => {
 		setFormValues((state) => ({
@@ -10,10 +12,17 @@ export default function useForm(submitHandler, initialValues) {
 		}));
 	};
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		submitHandler(formValues);
+		try {
+			setIsLoading(true);
+			await submitHandler(formValues);
+		} catch (error) {
+			setErrorMessage(error.message);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
-	return { formValues, onChange, onSubmit };
+	return { formValues, errorMessage, isLoading, onChange, onSubmit };
 }
