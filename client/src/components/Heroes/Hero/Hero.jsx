@@ -14,7 +14,7 @@ export default function Hero({ _id, name, imageUrl, description, }) {
 					data-te-ripple-color="light"
 				>
 					<img
-						className="rounded-t-lg aspect-video object-fill"
+						className="rounded-t-lg aspect-video w-full h-full"
 						src={imageUrl}
 						alt={name}
 					/>
