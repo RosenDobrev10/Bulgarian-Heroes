@@ -6,7 +6,7 @@ export default function CarouselComp() {
 	useEffect(() => {
 		initTE({ Carousel });
 	}, []);
-
+	
 	return (
 		<div
 			id="carouselExampleIndicators"
