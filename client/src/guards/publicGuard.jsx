@@ -7,7 +7,7 @@ export const RouteGuardPublic = ({ children }) => {
 	const { isLoggedIn } = useAuthContext();
 
 	if (isLoggedIn) {
-		return <Navigate to="/" replace />;
+		return <Navigate to="/heroes" replace />;
 	}
 
 	return children ? children : <Outlet />;

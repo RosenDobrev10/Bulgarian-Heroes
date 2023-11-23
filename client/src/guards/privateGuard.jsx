@@ -7,7 +7,7 @@ export const RouteGuardPrivate = ({ children }) => {
 	const { isLoggedIn } = useAuthContext();
 
 	if (!isLoggedIn) {
-		return <Navigate to="/login" replace />;
+		return < Navigate to="/login" replace />;
 	}
 
 	return children ? children : <Outlet />;
