@@ -1,17 +1,15 @@
 export default function formatDateToTimeAgo(isoDateString) {
-	// This function formats a given ISO date string into a human-readable time ago representation
 	const currentDate = new Date(); // Get the current date
-	const inputDate = new Date(isoDateString); // Parse the input date from the ISO date string
-	const timeDifference = currentDate - inputDate; // Calculate the time difference between the current date and the input date
+	const inputDate = new Date(isoDateString); // Parse date from the ISO date string
+	const timeDifference = currentDate - inputDate; // Calculate the time difference
 
-	const seconds = Math.floor(timeDifference / 1000); // Convert time difference to seconds
-	const minutes = Math.floor(seconds / 60); // Convert time difference to minutes
-	const hours = Math.floor(minutes / 60); // Convert time difference to hours
-	const days = Math.floor(hours / 24); // Convert time difference to days
-	const years = Math.floor(days / 365); // Convert time difference to years
+	const seconds = Math.floor(timeDifference / 1000);  
+	const minutes = Math.floor(seconds / 60);  
+	const hours = Math.floor(minutes / 60);  
+	const days = Math.floor(hours / 24);  
+	const years = Math.floor(days / 365);  
 
 	if (years > 0) {
-		// Return time ago representation
 		return `${years} годин${years === 1 ? 'а' : 'и'}`;
 	} else if (days > 0) {
 		return `${days} д${days === 1 ? 'ен' : 'ни'}`;
