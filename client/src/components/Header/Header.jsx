@@ -78,7 +78,7 @@ export default function Header() {
 						<li role="profile" className="flex-auto text-center">
 							<NavLink
 								to="/profile"
-								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pb-3.5 pt-4 text-sm font-medium uppercase leading-tight text-white hover:text-red-500 md:mr-4"
+								className="hover:scale-105 my-2 block rounded bg-green-500 px-7 pt-1 text-sm font-medium uppercase leading-normal text-white hover:text-red-500 md:mr-4"
 								id="pills-profile-tab01"
 								data-te-toggle="pill"
 								data-te-target="#pills-profile01"
@@ -86,7 +86,7 @@ export default function Header() {
 								aria-controls="pills-profile01"
 								aria-selected="false"
 							>
-								{getUserEmail}
+								Профил на<span className='block'>{getUserEmail}</span>
 							</NavLink>
 						</li>
 						<li role="logout" className="flex-auto text-center">
