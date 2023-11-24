@@ -37,20 +37,6 @@ export default function Delete({ toggleDeleteModal, name, _id }) {
 						<div className="text-center p-5 flex-auto justify-center">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
 								className="w-16 h-16 flex items-center text-red-500 mx-auto"
 								viewBox="0 0 20 20"
 								fill="currentColor"
