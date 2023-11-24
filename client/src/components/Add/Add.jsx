@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { addFormKeys } from '../../core/environments/constants.js';
 import useForm from '../../hooks/useForm.js';
 import { createHero } from '../../core/api/heroesApi.js';
-import Message from '../Message/Message.jsx';
 import addValidation from './addValidation.js';
+
+import Message from '../Message/Message.jsx';
 
 export default function Add() {
 	const navigate = useNavigate();
