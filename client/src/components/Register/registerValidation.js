@@ -1,15 +1,14 @@
-import { registerFormKeys } from '../../core/environments/constants.js';
-
-const pattern = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+import { emailPattern, registerFormKeys } from '../../core/environments/constants.js';
 
 export default function registerValidation(inputName, inputValue) {
 	if (inputName === registerFormKeys.email) {
 		if (inputValue === '') {
 			return { [inputName]: 'Полето е задължително !' };
-		} else if (pattern.test(inputValue) === false) {
+		} else if (emailPattern.test(inputValue) === false) {
 			return { [inputName]: 'Невалиден формат !' };
 		}
 		return { [inputName]: '' };
+
 	} else if (inputName === registerFormKeys.password) {
 		if (inputValue === '') {
 			return { [inputName]: 'Полето е задължително !' };
@@ -17,6 +16,7 @@ export default function registerValidation(inputName, inputValue) {
 			return { [inputName]: 'Минимум 6 символа !' };
 		}
 		return { [inputName]: '' };
+
 	} else if (inputName === registerFormKeys.repass) {
 		if (inputValue === '') {
 			return { [inputName]: 'Полето е задължително !' };

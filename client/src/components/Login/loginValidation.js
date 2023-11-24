@@ -1,15 +1,14 @@
-import { loginFormKeys } from '../../core/environments/constants.js';
-
-const pattern = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+import { emailPattern, loginFormKeys } from '../../core/environments/constants.js';
 
 export default function loginValidation(inputName, inputValue) {
 	if (inputName === loginFormKeys.email) {
 		if (inputValue === '') {
 			return { [inputName]: 'Полето е задължително !' };
-		} else if (pattern.test(inputValue) === false) {
+		} else if (emailPattern.test(inputValue) === false) {
 			return { [inputName]: 'Невалиден формат !' };
 		}
 		return { [inputName]: '' };
+
 	} else if (inputName === loginFormKeys.password) {
 		if (inputValue === '') {
 			return { [inputName]: 'Полето е задължително !' };
