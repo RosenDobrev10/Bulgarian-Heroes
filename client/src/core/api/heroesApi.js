@@ -22,7 +22,7 @@ export async function editHeroById(heroId, heroData) {
 }
 
 export async function likeHero(heroId) {
-	return api.post(endpoints.likeHero(heroId));
+	return api.post(endpoints.likeHero, { heroId });
 }
 
 export async function likesForHero(heroId) {
