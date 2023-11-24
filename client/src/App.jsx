@@ -6,6 +6,7 @@ import Heroes from './components/Heroes/Heroes.jsx';
 import Details from './components/Details/Details.jsx';
 import Search from './components/Search/Search.jsx';
 import Add from './components/Add/Add.jsx';
+import Edit from './components/Edit/Edit.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import Logout from './components/Logout/Logout.jsx';
@@ -31,6 +32,7 @@ export default function App() {
 				{/* PRIVATE ROUTES */}
 				<Route element={<RouteGuardPrivate />}>
 					<Route path="/add" element={<Add />} />
+					<Route path="/heroes/:heroId/edit" element={<Edit />} />
 					{/* <Route path="/profile" element={<Profile />} /> */}
 					<Route path="/logout" element={<Logout />} />
 				</Route>
