@@ -1531,6 +1531,8 @@
 		sessions: {}
 	};
 	var seedData = {
+		likes: {
+    	},
 		heroes: {
 			'e797fa57-bf0a-4749-8028-72dba715e5f8': {
 				_id: 'e797fa57-bf0a-4749-8028-72dba715e5f8',
