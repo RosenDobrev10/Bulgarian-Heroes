@@ -5,13 +5,15 @@ import styles from './Hero.module.css'
 import { Ripple, initTE } from 'tw-elements';
 initTE({ Ripple });
 
-export default function Hero({ _id, name, imageUrl, description, }) {
+import formatDateToTimeAgo from '../../../util/formatDateToTimeAgo.js';
+
+export default function Hero({ _id, name, imageUrl, description, _createdOn}) {
 	return (
 		<>
 			<div className="block rounded-lg bg-green-500 shadow-2xl">
 				<div
 					className="relative overflow-hidden bg-cover bg-no-repeat"
-					data-te-ripple-init=""
+					data-te-ripple-init
 					data-te-ripple-color="light"
 				>
 					<img
@@ -30,7 +32,7 @@ export default function Hero({ _id, name, imageUrl, description, }) {
 					<p className={`${styles.rowLength} mb-4 text-base text-white overflow-ellipsis`}>{description}</p>
 					<div className='flex justify-between'>
 						<p className="mb-4 text-base text-white">
-							Харесвания:
+						Добавен преди {formatDateToTimeAgo(_createdOn)}
 						</p>
 						<Link
 							to={`/heroes/${_id}`}
