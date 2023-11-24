@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
 import { tokenName } from '../core/environments/constants.js';
 
-export const useSessionStorage = () => {
+export default function useSessionStorage() {
 	const [currentUserData, setCurrentUserData] = useState(() => {
 		try {
 			const localStorageData = JSON.parse(localStorage.getItem(tokenName));
@@ -15,21 +16,21 @@ export const useSessionStorage = () => {
 		return null;
 	});
 
-	const setUserState = ({ accessToken, email, _id }) => {
+	function setUserState({ accessToken, email, _id }) {
 		if (accessToken) {
 			localStorage.setItem(tokenName, JSON.stringify({ accessToken, email, _id }));
 			setCurrentUserData({ accessToken, email, _id });
 		}
-	};
+	}
 
-	const clearUserState = () => {
+	function clearUserState() {
 		localStorage.removeItem(tokenName);
 		setCurrentUserData(null);
-	};
+	}
 
 	return {
 		currentUserData,
 		setUserState,
-		clearUserState,
+		clearUserState
 	};
-};
+}

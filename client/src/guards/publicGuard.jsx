@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { useAuthContext } from '../hooks/useAuthContext.js';
+import useAuthContext from '../hooks/useAuthContext.js';
 
-export const RouteGuardPublic = ({ children }) => {
+export default function RouteGuardPublic({ children }) {
 	const { isLoggedIn } = useAuthContext();
 
 	if (isLoggedIn) {
@@ -11,4 +11,4 @@ export const RouteGuardPublic = ({ children }) => {
 	}
 
 	return children ? children : <Outlet />;
-};
+}

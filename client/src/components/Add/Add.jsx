@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { addFormKeys } from '../../core/environments/constants.js';
 import useForm from '../../hooks/useForm.js';
+import { addFormKeys } from '../../core/environments/constants.js';
 import { createHero } from '../../core/api/heroesApi.js';
 import addValidation from './addValidation.js';
 
@@ -15,14 +15,14 @@ export default function Add() {
 		document.title = 'Добави';
 	}, []);
 
-	const createSubmitHandler = async (formValues) => {
+	async function createSubmitHandler(formValues) {
 		try {
 			await createHero(formValues);
 			navigate('/heroes');
 		} catch (error) {
 			console.log(error.message);
 		}
-	};
+	}
 
 	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(createSubmitHandler, {
 		[addFormKeys.name]: '',
@@ -36,13 +36,16 @@ export default function Add() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
-			{(!isLoading && serverErrorMessage) && <Message serverErrorMessage={serverErrorMessage} />}
+
+			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
+
 				<div className="w-full">
 					<p className="tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold">
 						Добави герой
 					</p>
 					<div className="mt-10">
 						<form className="px-10" onSubmit={onSubmit}>
+
 							{/* NAME */}
 							<div className="relative mt-2">
 								<label
@@ -126,9 +129,7 @@ export default function Add() {
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
 										onBlur={onBlur}
-										value={
-											formValues[addFormKeys.imageUrl]
-										}
+										value={formValues[addFormKeys.imageUrl]}
 									/>
 								</div>
 							</div>
@@ -172,11 +173,7 @@ export default function Add() {
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
 										onBlur={onBlur}
-										value={
-											formValues[
-												addFormKeys.occupation
-											]
-										}
+										value={formValues[addFormKeys.occupation]}
 									/>
 								</div>
 							</div>
@@ -220,11 +217,7 @@ export default function Add() {
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
 										onBlur={onBlur}
-										value={
-											formValues[
-												addFormKeys.birthplace
-											]
-										}
+										value={formValues[addFormKeys.birthplace]}
 									/>
 								</div>
 							</div>
@@ -311,11 +304,7 @@ export default function Add() {
 										className="w-full text-neutral-600 placeholder:text-neutral-600 focus:placeholder:opacity-0 px-4 outline-none"
 										onChange={onChange}
 										onBlur={onBlur}
-										value={
-											formValues[
-												addFormKeys.description
-											]
-										}
+										value={formValues[addFormKeys.description]}
 									></textarea>
 								</div>
 							</div>

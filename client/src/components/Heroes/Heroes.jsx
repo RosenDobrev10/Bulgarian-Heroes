@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
+import { Animate, initTE } from 'tw-elements';
+initTE({ Animate });
 
 import { getAllHeroes } from '../../core/api/heroesApi.js';
 
-import Spinner from '../Spinner/Spinner.jsx';
 import Hero from './Hero/Hero.jsx';
-
-import { Animate, initTE } from 'tw-elements';
+import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-initTE({ Animate });
 
 export default function Heroes() {
 	const [heroes, setHeroes] = useState([]);

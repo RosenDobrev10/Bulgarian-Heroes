@@ -3,22 +3,22 @@ import { useState } from 'react';
 
 import { likeHero } from '../../../core/api/heroesApi.js';
 
-import Message from '../../Message/Message.jsx';
 import Spinner from '../../Spinner/Spinner.jsx';
+import Message from '../../Message/Message.jsx';
 
 export default function Like({ toggleLikeModal, onAddLike, name, _id }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 
-	const onLikeHandler = () => {
+	function onLikeHandler() {
 		likeHero(_id)
 			.then(() => {
-                onAddLike();
-                toggleLikeModal();
-            })
+				onAddLike();
+				toggleLikeModal();
+			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
-	};
+	}
 
 	return (
 		<div
@@ -28,11 +28,12 @@ export default function Like({ toggleLikeModal, onAddLike, name, _id }) {
 			{isLoading && <Spinner />}
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
+
 			<div className="absolute bg-black opacity-80 inset-0 z-0" />
-			<div className="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
-				{/*content*/}
+			<div className="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white ">
+				{/* CONTENT */}
 				<div className="">
-					{/*body*/}
+					{/* BODY */}
 					<div className="text-center p-5 flex-auto justify-center">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -60,14 +61,14 @@ export default function Like({ toggleLikeModal, onAddLike, name, _id }) {
 								clipRule="evenodd"
 							/>
 						</svg>
-						<h2 className="text-xl font-bold py-4 ">
+						<h2 className="text-xl font-bold py-4">
 							Потвърдете харесването.
 						</h2>
 						<p className="text-sm text-gray-500 px-8">
 							Наистина ли желаете да харесате {name}?
 						</p>
 					</div>
-					{/*footer*/}
+					{/* FOOTER */}
 					<div className="p-3  mt-2 text-center space-x-4 md:block">
 						<button
 							onClick={toggleLikeModal}

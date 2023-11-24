@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Login.module.css';
 
+import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import { loginFormKeys } from '../../core/environments/constants.js';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
+import loginValidation from './loginValidation.js';
 
 import Message from '../Message/Message.jsx';
-import loginValidation from './loginValidation.js';
 
 export default function Login() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -17,9 +17,9 @@ export default function Login() {
 		document.title = 'Вход';
 	}, []);
 
-	const togglePasswordVisibility = () => {
+	function togglePasswordVisibility() {
 		setShowPassword(!showPassword);
-	};
+	}
 
 	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit} = useForm(loginSubmitHandler,
 		{
@@ -32,9 +32,9 @@ export default function Login() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
-				{!isLoading && serverErrorMessage && (
-					<Message serverErrorMessage={serverErrorMessage} />
-				)}
+
+			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
+
 				<div className="w-full">
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}
@@ -43,6 +43,7 @@ export default function Login() {
 					</p>
 					<div className="mt-10">
 						<form className="px-10" onSubmit={onSubmit}>
+
 							{/* EMAIL */}
 							<div className="relative mt-2">
 								<label
@@ -119,9 +120,7 @@ export default function Login() {
 								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
 									<input
-										type={
-											showPassword ? 'text' : 'password'
-										}
+										type={showPassword ? 'text' : 'password'}
 										name={loginFormKeys.password}
 										placeholder="Въведете парола"
 										id={loginFormKeys.password}

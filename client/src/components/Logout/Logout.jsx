@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-
-import { logout } from '../../core/api/userApi.js';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
+
+import useAuthContext from '../../hooks/useAuthContext.js';
+import { logout } from '../../core/api/userApi.js';
 
 export default function Logout() {
 	const navigate = useNavigate();

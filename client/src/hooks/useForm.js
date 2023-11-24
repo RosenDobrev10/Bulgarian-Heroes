@@ -6,19 +6,19 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 	const [formErrorMessage, setFormErrorMessage] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 
-	const onChange = (e) => {
+	function onChange(e) {
 		setFormValues((state) => ({
 			...state,
 			[e.target.name]: e.target.value
 		}));
-	};
+	}
 
-	const onBlur = (e) => {
+	function onBlur(e){
 		const currentErrors = validateFunction(e.target.name, e.target.value);
 		setFormErrorMessage((state) => ({ ...state, ...currentErrors }));
-	};
+	}
 
-	const onSubmit = async (e) => {
+	async function onSubmit(e){
 		e.preventDefault();
 		try {
 			setIsLoading(true);
@@ -28,7 +28,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		} finally {
 			setIsLoading(false);
 		}
-	};
+	}
 
 	return {
 		formValues,

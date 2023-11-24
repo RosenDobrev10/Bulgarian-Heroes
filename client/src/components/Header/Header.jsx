@@ -1,19 +1,18 @@
+import { NavLink } from 'react-router-dom';
+import styles from './Header.module.css';
 import { Tab, initTE } from 'tw-elements';
 initTE({ Tab });
-import { NavLink } from 'react-router-dom';
 
-import styles from './Header.module.css';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
+import useAuthContext from '../../hooks/useAuthContext.js';
 
 export default function Header() {
-	const { isLoggedIn, getUserEmail} = useAuthContext();
+	const { isLoggedIn, getUserEmail } = useAuthContext();
 	return (
 		<>
-			{/*Pills navigation*/}
 			<ul
 				className={`${styles.stickyHeader} bg-gray-100 mb-1 flex justify-around list-none flex-col flex-wrap pl-4 md:flex-row`}
 				role="tablist"
-				data-te-nav-ref=""
+				data-te-nav-ref
 			>
 				<li role="home" className="flex-auto text-center">
 					<NavLink
@@ -22,7 +21,7 @@ export default function Header() {
 						id="pills-home-tab01"
 						data-te-toggle="pill"
 						data-te-target="#pills-home01"
-						data-te-nav-active=""
+						data-te-nav-active
 						role="tab"
 						aria-controls="pills-home01"
 						aria-selected="true"
@@ -61,7 +60,7 @@ export default function Header() {
 
 				{isLoggedIn ? (
 					<>
-						{/*LOGGED */}
+						{/* LOGGED IN */}
 						<li role="add" className="flex-auto text-center">
 							<NavLink
 								to="/add"
@@ -107,7 +106,7 @@ export default function Header() {
 					</>
 				) : (
 					<>
-						{/* NOT LOGGED */}
+						{/* NOT LOGGED IN */}
 						<li role="login" className="flex-auto text-center">
 							<NavLink
 								to="/login"

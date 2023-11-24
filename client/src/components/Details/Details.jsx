@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import useAuthContext from '../../hooks/useAuthContext.js';
 import { canLike, getHeroById, likesForHero} from '../../core/api/heroesApi.js';
 import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
 
-import Spinner from '../Spinner/Spinner.jsx';
 import Delete from '../Heroes/Delete/Delete.jsx';
 import Like from '../Heroes/Like/Like.jsx';
+import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
 
 export default function Details() {
@@ -17,7 +17,6 @@ export default function Details() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [showLikeModal, setShowLikeModal] = useState(false);
-
 	const { heroId } = useParams();
 	const { getUserId, isLoggedIn } = useAuthContext();
 
@@ -52,23 +51,24 @@ export default function Details() {
 			.finally(() => setIsLoading(false));
 	}, [heroId, getUserId]);
 
-	const toggleDeleteModal = () => {
+	function toggleDeleteModal() {
 		setShowDeleteModal(!showDeleteModal);
-	};
+	}
 
-	const toggleLikeModal = () => {
+	function toggleLikeModal() {
 		setShowLikeModal(!showLikeModal);
-	};
+	}
 
-	const onAddLike = () => {
+	function onAddLike() {
 		setHero((state) => ({ ...state, likes: state.likes + 1, isLiked: state.isLiked + 1 }));
-	};
+	}
 
 	return (
 		<>
 			{isLoading && <Spinner />}
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
+
 			<div className="flex flex-col rounded-lg m-10 bg-green-500 shadow-2xl dark:bg-neutral-700 md:flex-row">
 				<img
 					className="aspect-video h-screen w-2/3 object-fill rounded-t-lg md:h-auto md:!rounded-none md:!rounded-l-lg"
@@ -79,19 +79,18 @@ export default function Details() {
 					<h2 className="mb-4 text-3xl font-medium text-white">
 						{hero.name}
 					</h2>
-					<p className="mb-4 text-base text-white ">
+					<p className="mb-4 text-base text-white">
 						{hero.description}
 					</p>
-					<p className="mb-4 text-base text-white ">
+					<p className="mb-4 text-base text-white">
 						Роден през {hero.born} в {hero.birthplace}.
 					</p>
-					<p className="mb-4 text-base text-white ">
+					<p className="mb-4 text-base text-white">
 						Основна дейност като {hero.occupation}.
 					</p>
 					<div className="flex justify-between items-center">
 						<p className="mb-4 text-base text-white ">
-							Добавен преди {formatDateToTimeAgo(hero._createdOn)}
-							.
+							Добавен преди {formatDateToTimeAgo(hero._createdOn)}.
 						</p>
 						<p className="mb-4 text-base text-white ">
 							Харесвания: {hero.likes}
@@ -130,16 +129,10 @@ export default function Details() {
 						))}
 				</div>
 			</div>
-			{showDeleteModal && (
-				<Delete toggleDeleteModal={toggleDeleteModal} {...hero} />
-			)}
-			{showLikeModal && (
-				<Like
-					toggleLikeModal={toggleLikeModal}
-					onAddLike={onAddLike}
-					{...hero}
-				/>
-			)}
+
+			{showDeleteModal && <Delete toggleDeleteModal={toggleDeleteModal} {...hero} />}
+
+			{showLikeModal && <Like toggleLikeModal={toggleLikeModal} onAddLike={onAddLike} {...hero} />}
 		</>
 	);
 }

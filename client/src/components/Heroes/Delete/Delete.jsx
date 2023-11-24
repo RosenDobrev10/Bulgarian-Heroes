@@ -1,23 +1,23 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { deleteHeroById } from '../../../core/api/heroesApi.js';
 
-import Message from '../../Message/Message.jsx';
 import Spinner from '../../Spinner/Spinner.jsx';
+import Message from '../../Message/Message.jsx';
 
-/* eslint-disable react/prop-types */
 export default function Delete({ toggleDeleteModal, name, _id }) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 	const navigate = useNavigate();
 
-	const onDeleteHandler = () => {
+	function onDeleteHandler() {
 		deleteHeroById(_id)
-			.then(() => navigate('/heroes', { replace:true }))
+			.then(() => navigate('/heroes', { replace: true }))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
-	};
+	}
 
 	return (
 		<>
@@ -28,11 +28,12 @@ export default function Delete({ toggleDeleteModal, name, _id }) {
 				{isLoading && <Spinner />}
 
 				{errorMessage && <Message errorMessage={errorMessage} />}
+
 				<div className="absolute bg-black opacity-80 inset-0 z-0" />
-				<div className="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
-					{/*content*/}
+				<div className="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white">
+					{/* CONTENT */}
 					<div className="">
-						{/*body*/}
+						{/* BODY */}
 						<div className="text-center p-5 flex-auto justify-center">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +61,7 @@ export default function Delete({ toggleDeleteModal, name, _id }) {
 									clipRule="evenodd"
 								/>
 							</svg>
-							<h2 className="text-xl font-bold py-4 ">
+							<h2 className="text-xl font-bold py-4">
 								Потвърдете изтриването.
 							</h2>
 							<p className="text-sm text-gray-500 px-8">

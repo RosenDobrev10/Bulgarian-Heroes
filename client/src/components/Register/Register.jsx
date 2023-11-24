@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Register.module.css';
 
+import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import { registerFormKeys } from '../../core/environments/constants.js';
-import { useAuthContext } from '../../hooks/useAuthContext.js';
-
-import Message from '../Message/Message.jsx';
 import registerValidation from './registerValidation.js';
 
+import Message from '../Message/Message.jsx';
 
 export default function Register() {
 	const [showPassword, setShowPassword] = useState(false);
@@ -19,13 +18,13 @@ export default function Register() {
 		document.title = 'Регистрация';
 	}, []);
 
-	const togglePasswordVisibility = () => {
+	function togglePasswordVisibility() {
 		setShowPassword(!showPassword);
-	};
+	}
 
-	const toggleConfirmPasswordVisibility = () => {
+	function toggleConfirmPasswordVisibility() {
 		setShowConfirmPassword(!showConfirmPassword);
-	};
+	}
 
 	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(registerSubmitHandler, {
 		[registerFormKeys.email]: '',
@@ -36,7 +35,9 @@ export default function Register() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
-			{(!isLoading && serverErrorMessage) && <Message serverErrorMessage={serverErrorMessage} />}
+
+			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
+
 				<div className="w-full">
 					<p
 						className={`${styles.textShadow} tracking-widest underline underline-offset-8 text-center text-neutral-600 text-2xl font-semibold`}
@@ -45,6 +46,7 @@ export default function Register() {
 					</p>
 					<div className="mt-10">
 						<form className="px-10" onSubmit={onSubmit}>
+
 							{/* EMAIL */}
 							<div className="relative mt-2">
 								<label

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
+
 import { Toast, initTE } from 'tw-elements';
 
 export default function Message({ serverErrorMessage }) {
@@ -15,8 +16,8 @@ export default function Message({ serverErrorMessage }) {
 			aria-live="assertive"
 			aria-atomic="true"
 			data-te-autohide="false"
-			data-te-toast-init=""
-			data-te-toast-show=""
+			data-te-toast-init
+			data-te-toast-show
 		>
 			<div className="flex items-center justify-between rounded-t-lg border-b-2 border-danger-200 bg-danger-100 bg-clip-padding px-4 pb-2 pt-2.5 text-danger-700">
 				<p className="flex items-center font-bold text-danger-700">
@@ -26,7 +27,7 @@ export default function Message({ serverErrorMessage }) {
 					<button
 						type="button"
 						className="ml-2 box-content rounded-none border-none opacity-80 hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
-						data-te-toast-dismiss=""
+						data-te-toast-dismiss
 						aria-label="Close"
 					>
 						<span className="w-[1em] focus:opacity-100 disabled:pointer-events-none disabled:select-none disabled:opacity-25 [&.disabled]:pointer-events-none [&.disabled]:select-none [&.disabled]:opacity-25">

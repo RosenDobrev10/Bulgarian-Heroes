@@ -1,5 +1,4 @@
 import { Ripple, initTE } from 'tw-elements';
-
 initTE({ Ripple });
 
 export default function Search() {
@@ -17,7 +16,7 @@ export default function Search() {
 					className="relative z-[2] rounded-md bg-red-500 border-2 border-red-500 px-6 py-2 text-xs font-medium uppercase text-white transition duration-150 ease-in-out hover:bg-opacity-80 focus:outline-none focus:ring-0"
 					type="button"
 					id="button-addon3"
-					data-te-ripple-init=""
+					data-te-ripple-init
 				>
 					Търси
 				</button>
