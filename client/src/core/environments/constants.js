@@ -24,13 +24,13 @@ export const endpoints = {
 export const loginFormKeys = {
 	email: 'email',
 	password: 'password'
-}
+};
 
 export const registerFormKeys = {
 	email: 'email',
 	password: 'password',
 	repass: 'repass'
-}
+};
 
 export const addFormKeys = {
 	name: 'name',
@@ -39,4 +39,4 @@ export const addFormKeys = {
 	birthplace: 'birthplace',
 	born: 'born',
 	description: 'description',
-}
+};
