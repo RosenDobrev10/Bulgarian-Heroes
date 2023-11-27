@@ -16,7 +16,7 @@ export const endpoints = {
 	likeHero: 'data/likes',
 	canLike: (heroId, userId) => `data/likes?where=heroId%3D%22${heroId}%22%20and%20_ownerId%3D%22${userId}%22&count`,
 	likesForHero: (heroId) => `data/likes?where=heroId%3D%22${heroId}%22&distinct=_ownerId&count`,
-	search: (query) => `data/heroes?where=name%20LIKE%20%22${query}%22&sortBy=_createdOn%20desc`,
+	search: (search) => `data/heroes?where=name%20LIKE%20%22${search}%22&sortBy=_createdOn%20desc`,
 	getMyHeroes: (userId) => `data/heroes?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`
 };
 
