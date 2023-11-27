@@ -7,6 +7,7 @@ import { createHero } from '../../core/api/heroesApi.js';
 import addValidation from './addValidation.js';
 
 import Message from '../Message/Message.jsx';
+import Spinner from '../Spinner/Spinner.jsx';
 
 export default function Add() {
 	const navigate = useNavigate();
@@ -16,12 +17,8 @@ export default function Add() {
 	}, []);
 
 	async function createSubmitHandler(formValues) {
-		try {
 			await createHero(formValues);
 			navigate('/heroes');
-		} catch (error) {
-			console.log(error.message);
-		}
 	}
 
 	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(createSubmitHandler, {
@@ -36,6 +33,8 @@ export default function Add() {
 	return (
 		<>
 			<div className="max-w-xl container mx-auto rounded-lg p-10 shadow-2xl mt-4">
+
+			{isLoading && <Spinner/>}
 
 			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
 
