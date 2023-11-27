@@ -1,0 +1,22 @@
+.waviy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.waviySpan {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: green;
+    text-transform: uppercase;
+    animation: flip 4s infinite;
+    animation-delay: calc(0.15s * var(--i))
+}
+
+@keyframes flip {
+    0%,
+    80% {
+        transform: rotateY(360deg)
+    }
+}
