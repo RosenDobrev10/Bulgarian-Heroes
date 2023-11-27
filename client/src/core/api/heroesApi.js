@@ -21,6 +21,10 @@ export async function editHeroById(heroId, heroData) {
 	return api.put(endpoints.editHero(heroId), heroData);
 }
 
+export async function searchHero(search) {
+	return api.get(endpoints.search(search));
+}
+
 export async function likeHero(heroId) {
 	return api.post(endpoints.likeHero, { heroId });
 }
