@@ -40,7 +40,7 @@ export default function Search() {
 
 			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
 
-			<form className="relative mb-4 flex justify-center self-start flex-wrap" onSubmit={onSubmit}>
+			<form className="relative my-4 flex justify-center self-start flex-wrap" onSubmit={onSubmit}>
 				<input
 					type="search"
 					className="relative block min-w-0 rounded-md border-2 border-solid border-green-500 bg-green-500 bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-white outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-green-500 focus:text-white focus:shadow-2xl focus:outline-none placeholder:text-white"
