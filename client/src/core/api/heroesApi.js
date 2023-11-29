@@ -36,3 +36,7 @@ export async function likesForHero(heroId) {
 export async function canLike(heroId, userId) {
 	return api.get(endpoints.canLike(heroId, userId));
 }
+
+export async function getMyHeroes(userId) {
+	return api.get(endpoints.getMyHeroes(userId))
+}
