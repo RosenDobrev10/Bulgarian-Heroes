@@ -18,7 +18,7 @@ export default function Heroes() {
 	useEffect(() => {
 		document.title = 'Герои';
 		getAllHeroes()
-			.then((data) => setHeroes([]))
+			.then((data) => setHeroes(data))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 	}, []);
