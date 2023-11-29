@@ -26,7 +26,7 @@ export default function Search() {
 	
 	async function searchHandler(){
 		const result = await searchHero(formValues.search || searchParams.get('name'));
-		setFoundHeroes(result)
+		setFoundHeroes(result);
 		setSearchParams({name: formValues.search});
 		setHasSearch(true);	
 	}
