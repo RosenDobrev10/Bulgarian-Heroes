@@ -51,11 +51,11 @@ export default function Delete({ toggleDeleteModal, name, _id }) {
 								Потвърдете изтриването.
 							</h2>
 							<p className="text-sm text-gray-500 px-8">
-								Наистина ли желаете да изтриете {name}?
+								Наистина ли желаете да изтриете <span className='font-bold'>{name}</span> ?
 							</p>
 						</div>
 						{/*footer*/}
-						<div className="p-3  mt-2 text-center space-x-4 md:block">
+						<div className="p-3 mt-2 text-center space-x-4 md:block">
 							<button
 								onClick={toggleDeleteModal}
 								className="mb-2 md:mb-0 bg-green-500 px-5 py-2 text-sm text-white shadow-sm font-medium tracking-wider border rounded-full hover:shadow-lg hover:opacity-80"

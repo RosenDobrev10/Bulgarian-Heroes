@@ -51,7 +51,7 @@ export default function Like({ toggleLikeModal, onAddLike, name, _id }) {
 							Потвърдете харесването.
 						</h2>
 						<p className="text-sm text-gray-500 px-8">
-							Наистина ли желаете да харесате {name}?
+							Наистина ли желаете да харесате <span className='font-bold'>{name}</span> ?
 						</p>
 					</div>
 					{/* FOOTER */}
