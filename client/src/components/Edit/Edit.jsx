@@ -10,20 +10,18 @@ import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
 
 export default function Edit() {
-	const [hero, setHero] = useState({});
 	const [isLoadingMain, setIsLoadingMain] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 	const navigate = useNavigate();
 	const { heroId } = useParams();
 
-    useEffect(() => {
+	useEffect(() => {
 		document.title = 'Промени';
 		getHeroById(heroId)
-			.then((heroData) => setHero(heroData))
+			.then((heroData) => setChangedInitialValues(heroData))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoadingMain(false));
 	}, [heroId]);
-    // TODO make EDIT work
 
     async function editSubmitHandler(formValues) {
 		try {
@@ -34,14 +32,14 @@ export default function Edit() {
 		}
 	}
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(editSubmitHandler,
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit, setChangedInitialValues } = useForm(editSubmitHandler,
 		{
-			[addFormKeys.name]: hero.name,
-			[addFormKeys.imageUrl]: hero.imageUrl,
-			[addFormKeys.occupation]: hero.occupation,
-			[addFormKeys.birthplace]: hero.birthplace,
-			[addFormKeys.born]: hero.born,
-			[addFormKeys.description]: hero.description
+			[addFormKeys.name]: '',
+			[addFormKeys.imageUrl]: '',
+			[addFormKeys.occupation]: '',
+			[addFormKeys.birthplace]: '',
+			[addFormKeys.born]: '',
+			[addFormKeys.description]: ''
 		},
 		addValidation
 	);
