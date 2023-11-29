@@ -86,7 +86,7 @@ export default function Header() {
 								aria-controls="pills-profile01"
 								aria-selected="false"
 							>
-								Профил на<span className='block'>{getUserEmail}</span>
+								Героите на<span className='block'>{getUserEmail}</span>
 							</NavLink>
 						</li>
 						<li role="logout" className="flex-auto text-center">
