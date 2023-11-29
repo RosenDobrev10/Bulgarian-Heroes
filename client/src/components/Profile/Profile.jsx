@@ -5,6 +5,7 @@ initTE({ Animate });
 import styles from './Profile.module.css'
 
 import { getMyHeroes } from '../../core/api/heroesApi.js';
+import useAuthContext from '../../hooks/useAuthContext.js';
 
 import Hero from '../Heroes/Hero/Hero.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
@@ -14,10 +15,11 @@ export default function Profile() {
 	const [myHeroes, setMyHeroes] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
+    const { getUserId } = useAuthContext();
 
 	useEffect(() => {
 		document.title = 'Профил';
-		getMyHeroes()
+		getMyHeroes(getUserId)
 			.then((data) => setMyHeroes(data))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
