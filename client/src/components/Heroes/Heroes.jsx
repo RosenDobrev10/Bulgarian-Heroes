@@ -39,7 +39,7 @@ export default function Heroes() {
 			</ul>
 			)}
 
-			{heroes.length === 0 && (
+			{!isLoading && heroes.length === 0 && (
 				<div className={styles.waviy}>
 					<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
 					<span style={{"--i":2}} className={styles.waviySpan}>я</span>
