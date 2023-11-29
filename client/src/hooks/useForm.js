@@ -30,6 +30,10 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		}
 	}
 
+	function setChangedInitialValues(changedFormValues){
+		setFormValues(changedFormValues);
+	}
+
 	return {
 		formValues,
 		formErrorMessage,
@@ -37,6 +41,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		isLoading,
 		onChange,
 		onBlur,
-		onSubmit
+		onSubmit,
+		setChangedInitialValues
 	};
 }
