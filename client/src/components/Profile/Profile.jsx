@@ -18,12 +18,12 @@ export default function Profile() {
     const { getUserId } = useAuthContext();
 
 	useEffect(() => {
-		document.title = 'Профил';
+		document.title = 'Моите герои';
 		getMyHeroes(getUserId)
 			.then((data) => setMyHeroes(data))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
-	}, []);
+	}, [getUserId]);
 
 	return (
 		<>
