@@ -86,7 +86,7 @@ export default function Details() {
 						Роден през {hero.born} в {hero.birthplace}.
 					</p>
 					<p className="mb-4 text-base text-white">
-						Основна дейност като {hero.occupation}.
+						Основна дейност: {hero.occupation}.
 					</p>
 					<div className="flex justify-between items-center">
 						<p className="mb-4 text-base text-white ">
