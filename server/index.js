@@ -1531,6 +1531,8 @@
 		sessions: {}
 	};
 	var seedData = {
+		comments: {
+		},
 		likes: {
     	},
 		heroes: {
