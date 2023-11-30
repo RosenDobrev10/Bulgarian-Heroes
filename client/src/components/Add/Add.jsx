@@ -5,6 +5,7 @@ import useForm from '../../hooks/useForm.js';
 import { addFormKeys } from '../../core/environments/constants.js';
 import { createHero } from '../../core/api/heroesApi.js';
 import addValidation from './addValidation.js';
+import checkForError from '../../util/checkForError.js';
 
 import Message from '../Message/Message.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
@@ -309,7 +310,9 @@ export default function Add() {
 							</div>
 
 							{/* ADD BUTTON */}
-							<button className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
+							<button 
+							disabled={checkForError(formErrorMessage)}
+							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Добави
 							</button>
 						</form>

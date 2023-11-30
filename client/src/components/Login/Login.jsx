@@ -6,6 +6,7 @@ import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import { loginFormKeys } from '../../core/environments/constants.js';
 import loginValidation from './loginValidation.js';
+import checkForError from '../../util/checkForError.js';
 
 import Message from '../Message/Message.jsx';
 
@@ -161,7 +162,9 @@ export default function Login() {
 							</div>
 
 							{/* LOGIN BUTTON */}
-							<button className="hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
+							<button
+							disabled={checkForError(formErrorMessage)}
+							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 block bg-green-400 rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Влезте
 							</button>
 

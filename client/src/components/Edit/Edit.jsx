@@ -8,6 +8,7 @@ import addValidation from '../Add/addValidation.js';
 
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
+import checkForError from '../../util/checkForError.js';
 
 export default function Edit() {
 	const [isLoadingMain, setIsLoadingMain] = useState(true);
@@ -331,7 +332,9 @@ export default function Edit() {
 							</div>
 
 							{/* ADD BUTTON */}
-							<button className="hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9">
+							<button 
+							disabled={checkForError(formErrorMessage)}
+							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Промени
 							</button>
 						</form>
