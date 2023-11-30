@@ -5,7 +5,6 @@ import useForm from '../../hooks/useForm.js';
 import { addFormKeys } from '../../core/environments/constants.js';
 import { createHero } from '../../core/api/heroesApi.js';
 import addValidation from './addValidation.js';
-import checkForError from '../../util/checkForError.js';
 
 import Message from '../Message/Message.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
@@ -22,7 +21,7 @@ export default function Add() {
 			navigate('/heroes');
 	}
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(createSubmitHandler, {
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit } = useForm(createSubmitHandler, {
 		[addFormKeys.name]: '',
 		[addFormKeys.imageUrl]: '',
 		[addFormKeys.occupation]: '',
@@ -311,8 +310,8 @@ export default function Add() {
 
 							{/* ADD BUTTON */}
 							<button 
-							disabled={checkForError(formErrorMessage)}
-							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
+							disabled={isInvalidForm}
+							className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Добави
 							</button>
 						</form>

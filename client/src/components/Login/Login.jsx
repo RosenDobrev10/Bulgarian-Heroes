@@ -6,7 +6,6 @@ import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import { loginFormKeys } from '../../core/environments/constants.js';
 import loginValidation from './loginValidation.js';
-import checkForError from '../../util/checkForError.js';
 
 import Message from '../Message/Message.jsx';
 
@@ -22,7 +21,7 @@ export default function Login() {
 		setShowPassword(!showPassword);
 	}
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit} = useForm(loginSubmitHandler,
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit} = useForm(loginSubmitHandler,
 		{
 			[loginFormKeys.email]: '',
 			[loginFormKeys.password]: ''
@@ -163,8 +162,8 @@ export default function Login() {
 
 							{/* LOGIN BUTTON */}
 							<button
-							disabled={checkForError(formErrorMessage)}
-							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 block bg-green-400 rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
+							disabled={isInvalidForm}
+							className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 block bg-green-400 rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Влезте
 							</button>
 
@@ -191,6 +190,3 @@ export default function Login() {
 		</>
 	);
 }
-
-
-// M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"

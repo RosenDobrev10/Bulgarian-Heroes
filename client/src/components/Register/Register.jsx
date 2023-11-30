@@ -6,7 +6,6 @@ import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import { registerFormKeys } from '../../core/environments/constants.js';
 import registerValidation from './registerValidation.js';
-import checkForError from '../../util/checkForError.js';
 
 import Message from '../Message/Message.jsx';
 
@@ -27,7 +26,7 @@ export default function Register() {
 		setShowConfirmPassword(!showConfirmPassword);
 	}
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit } = useForm(registerSubmitHandler, {
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit } = useForm(registerSubmitHandler, {
 		[registerFormKeys.email]: '',
 		[registerFormKeys.password]: '',
 		[registerFormKeys.repass]: '',
@@ -234,8 +233,8 @@ export default function Register() {
 
 							{/* LOGIN BUTTON */}
 							<button 
-							disabled={checkForError(formErrorMessage)}
-							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
+							disabled={isInvalidForm}
+							className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-green-400 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Регистрирайте се
 							</button>
 

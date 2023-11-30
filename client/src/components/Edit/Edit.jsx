@@ -8,7 +8,6 @@ import addValidation from '../Add/addValidation.js';
 
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-import checkForError from '../../util/checkForError.js';
 
 export default function Edit() {
 	const [isLoadingMain, setIsLoadingMain] = useState(true);
@@ -33,7 +32,7 @@ export default function Edit() {
 		}
 	}
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, onChange, onBlur, onSubmit, setChangedInitialValues } = useForm(editSubmitHandler,
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit, setChangedInitialValues } = useForm(editSubmitHandler,
 		{
 			[addFormKeys.name]: '',
 			[addFormKeys.imageUrl]: '',
@@ -333,8 +332,8 @@ export default function Edit() {
 
 							{/* ADD BUTTON */}
 							<button 
-							disabled={checkForError(formErrorMessage)}
-							className={`${checkForError(formErrorMessage) ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
+							disabled={isInvalidForm}
+							className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Промени
 							</button>
 						</form>
