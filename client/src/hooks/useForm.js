@@ -5,6 +5,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 	const [serverErrorMessage, setServerErrorMessage] = useState('');
 	const [formErrorMessage, setFormErrorMessage] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
+	const [isInvalidForm, setIsInvalidForm] = useState(true);
 
 	function onChange(e) {
 		setFormValues((state) => ({
@@ -12,10 +13,11 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 			[e.target.name]: e.target.value
 		}));
 	}
-
+	
 	function onBlur(e){
 		const currentErrors = validateFunction(e.target.name, e.target.value);
 		setFormErrorMessage((state) => ({ ...state, ...currentErrors }));
+		validateForm();
 	}
 
 	async function onSubmit(e){
@@ -30,6 +32,13 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		}
 	}
 
+	function validateForm(){
+		setIsInvalidForm(
+			Object.values(formValues).some(value => value === '') || 
+			Object.values(formErrorMessage).every(error => error)
+		);
+	}
+
 	function setChangedInitialValues(changedFormValues){
 		setFormValues(changedFormValues);
 	}
@@ -39,6 +48,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		formErrorMessage,
 		serverErrorMessage,
 		isLoading,
+		isInvalidForm,
 		onChange,
 		onBlur,
 		onSubmit,
