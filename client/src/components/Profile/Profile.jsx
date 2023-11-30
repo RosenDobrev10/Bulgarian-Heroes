@@ -14,13 +14,17 @@ import Message from '../Message/Message.jsx';
 export default function Profile() {
 	const [myHeroes, setMyHeroes] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [hasResult, setHasResult] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
     const { getUserId } = useAuthContext();
 
 	useEffect(() => {
 		document.title = 'Моите герои';
 		getMyHeroes(getUserId)
-			.then((data) => setMyHeroes(data))
+			.then((data) => {
+				setMyHeroes(data);
+				setHasResult(true);
+			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 	}, [getUserId]);
@@ -31,7 +35,7 @@ export default function Profile() {
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
 			
-			{myHeroes.length > 0 && (
+			{hasResult && myHeroes.length > 0 && (
 				<ul className="flex gap-10 flex-wrap justify-between m-5">
 				{myHeroes.map((hero) => (
 					<li key={hero._id} className="w-5/12 h-auto">
@@ -41,7 +45,7 @@ export default function Profile() {
 			</ul>
 			)}
 
-			{myHeroes.length === 0 && (
+			{hasResult && myHeroes.length === 0 && (
 				<div className={styles.waviy}>
 					<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
 					<span style={{"--i":2}} className={styles.waviySpan}>я</span>

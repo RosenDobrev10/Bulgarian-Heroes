@@ -38,7 +38,7 @@ export default function Search() {
 
 			{isLoading && <Spinner/>}
 
-			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
+			{serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
 
 			<form className="relative my-4 flex justify-center self-start flex-wrap" onSubmit={onSubmit}>
 				<input
@@ -70,7 +70,7 @@ export default function Search() {
 			</ul>
 			)}
 			
-			{!serverErrorMessage && hasSearch && foundHeroes.length === 0 && (
+			{hasSearch && foundHeroes.length === 0 && (
 			<div className={styles.waviy}>
 				<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
 				<span style={{"--i":2}} className={styles.waviySpan}>я</span>

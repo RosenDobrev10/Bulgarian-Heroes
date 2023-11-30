@@ -13,12 +13,16 @@ import Message from '../Message/Message.jsx';
 export default function Heroes() {
 	const [heroes, setHeroes] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [hasResult, setHasResult] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 
 	useEffect(() => {
 		document.title = 'Герои';
 		getAllHeroes()
-			.then((data) => setHeroes(data))
+			.then((data) => {
+				setHeroes(data);
+				setHasResult(true);
+			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 	}, []);
@@ -29,7 +33,7 @@ export default function Heroes() {
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
 			
-			{heroes.length > 0 && (
+			{hasResult && heroes.length > 0 && (
 				<ul className="flex gap-10 flex-wrap justify-between m-5">
 				{heroes.map((hero) => (
 					<li key={hero._id} className="w-5/12 h-auto">
@@ -39,7 +43,7 @@ export default function Heroes() {
 			</ul>
 			)}
 
-			{heroes.length === 0 && (
+			{hasResult && heroes.length === 0 && (
 				<div className={styles.waviy}>
 					<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
 					<span style={{"--i":2}} className={styles.waviySpan}>я</span>
