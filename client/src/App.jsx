@@ -1,5 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { AuthProvider } from './contexts/AuthContext.jsx';
+import RouteGuardPublic from './guards/publicGuard.jsx';
+import RouteGuardPrivate from './guards/privateGuard.jsx';
+
 import Header from './components/Header/Header.jsx';
 import Home from './components/Home/Home.jsx';
 
@@ -16,10 +20,6 @@ import Logout from './components/Logout/Logout.jsx';
 
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
-
-import { AuthProvider } from './contexts/AuthContext.jsx';
-import RouteGuardPublic from './guards/publicGuard.jsx';
-import RouteGuardPrivate from './guards/privateGuard.jsx';
 
 export default function App() {
 	return (
