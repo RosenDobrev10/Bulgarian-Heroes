@@ -1,8 +1,11 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header.jsx';
 import Home from './components/Home/Home.jsx';
-import Heroes from './components/Heroes/Heroes.jsx';
+
+const Heroes = lazy(() => import('./components/Heroes/Heroes.jsx'));
+// import Heroes from './components/Heroes/Heroes.jsx';
 import Details from './components/Details/Details.jsx';
 import Search from './components/Search/Search.jsx';
 import NotFound from './components/NotFound/NotFound.jsx';
