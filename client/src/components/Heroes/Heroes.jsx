@@ -29,7 +29,7 @@ export default function Heroes() {
 
 			{errorMessage && <Message errorMessage={errorMessage} />}
 			
-			{heroes.length > 0 && (
+			{heroes.length > 0 ? (
 				<ul className="flex gap-10 flex-wrap justify-between m-5">
 				{heroes.map((hero) => (
 					<li key={hero._id} className="w-5/12 h-auto">
@@ -37,9 +37,7 @@ export default function Heroes() {
 					</li>
 				))}
 			</ul>
-			)}
-
-			{heroes.length === 0 && (
+			) : (
 				<div className={styles.waviy}>
 					<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
 					<span style={{"--i":2}} className={styles.waviySpan}>я</span>
@@ -69,6 +67,8 @@ export default function Heroes() {
 					</Link>
 				</div>
 			)}
+
+			
 		</>
 	);
 }
