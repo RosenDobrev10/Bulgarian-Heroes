@@ -85,7 +85,7 @@ export default function Details() {
 					src={hero.imageUrl}
 					alt={hero.name}
 				/>
-				<div className="flex flex-col justify-start p-6">
+				<div className="flex flex-col flex-1 justify-start p-6">
 					<h2 className="mb-4 text-3xl font-medium text-white">
 						{hero.name}
 					</h2>
