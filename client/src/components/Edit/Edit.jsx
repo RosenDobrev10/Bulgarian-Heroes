@@ -332,7 +332,7 @@ export default function Edit() {
 
 							{/* ADD BUTTON */}
 							<button 
-							disabled={!isInvalidForm}
+							disabled={false || isInvalidForm}
 							className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} hover:drop-shadow-lg hover:opacity-80 bg-red-500 block rounded-lg shadow text-center text-white text-base font-semibold w-full py-3 mt-9`}>
 								Промени
 							</button>
