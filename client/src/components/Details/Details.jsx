@@ -37,12 +37,12 @@ export default function Details() {
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 
-			canLike(heroId, getUserId)
-			.then((isLiked) => {
-				setHero((state) => ({ ...state, isLiked }));
-			})
-			.catch((error) => setErrorMessage(error.message))
-			.finally(() => setIsLoading(false));
+		canLike(heroId, getUserId)
+		.then((isLiked) => {
+			setHero((state) => ({ ...state, isLiked }));
+		})
+		.catch((error) => setErrorMessage(error.message))
+		.finally(() => setIsLoading(false));
 
 		// Promise.all([
 		// 	getHeroById(heroId),
