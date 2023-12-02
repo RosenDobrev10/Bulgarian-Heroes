@@ -11,7 +11,7 @@ import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
 
 export default function Details() {
-	const [hero, setHero] = useState({});
+	const [hero, setHero] = useState({likes: 0});
 	const [isOwner, setIsOwner] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
