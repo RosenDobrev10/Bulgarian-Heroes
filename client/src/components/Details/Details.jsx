@@ -21,34 +21,41 @@ export default function Details() {
 	const { getUserId, isLoggedIn } = useAuthContext();
 
 	useEffect(() => {
-		// getHeroById(heroId)
-		// 	.then((heroData) => {
-		// 		setHero(heroData);
-		// 		setIsOwner(getUserId === heroData._ownerId);
-		// 		document.title = heroData.name;
-		// 	})
-		// 	.catch((error) => setErrorMessage(error.message))
-		// 	.finally(() => setIsLoading(false));
-
-		// likesForHero(heroId)
-		// 	.then((likes) => {
-		// 		setHero((state) => ({ ...state, likes }));
-		// 	})
-		// 	.catch((error) => setErrorMessage(error.message))
-		// 	.finally(() => setIsLoading(false));
-
-		Promise.all([
-			getHeroById(heroId),
-			likesForHero(heroId),
-			canLike(heroId, getUserId)
-		])
-			.then(([heroData, likes, isLiked]) => {
-				setHero({ ...heroData, likes, isLiked });
+		getHeroById(heroId)
+			.then((heroData) => {
+				setHero(heroData);
 				setIsOwner(getUserId === heroData._ownerId);
 				document.title = heroData.name;
 			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
+
+		likesForHero(heroId)
+			.then((likes) => {
+				setHero((state) => ({ ...state, likes }));
+			})
+			.catch((error) => setErrorMessage(error.message))
+			.finally(() => setIsLoading(false));
+
+			canLike(heroId, getUserId)
+			.then((isLiked) => {
+				setHero((state) => ({ ...state, isLiked }));
+			})
+			.catch((error) => setErrorMessage(error.message))
+			.finally(() => setIsLoading(false));
+
+		// Promise.all([
+		// 	getHeroById(heroId),
+		// 	likesForHero(heroId),
+		// 	canLike(heroId, getUserId)
+		// ])
+		// 	.then(([heroData, likes, isLiked]) => {
+		// 		setHero({ ...heroData, likes, isLiked });
+		// 		setIsOwner(getUserId === heroData._ownerId);
+		// 		document.title = heroData.name;
+		// 	})
+		// 	.catch((error) => setErrorMessage(error.message))
+		// 	.finally(() => setIsLoading(false));
 	}, [heroId, getUserId]);
 
 	function toggleDeleteModal() {
