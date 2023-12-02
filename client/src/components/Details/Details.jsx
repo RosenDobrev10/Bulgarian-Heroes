@@ -11,7 +11,9 @@ import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
 
 export default function Details() {
-	const [hero, setHero] = useState({likes: 0});
+	const [hero, setHero] = useState({});
+	const [heroLikes, setHeroLikes] = useState(0);
+	const [heroCanLike, setHeroCanLike] = useState(0);
 	const [isOwner, setIsOwner] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
@@ -33,14 +35,14 @@ export default function Details() {
 
 		likesForHero(heroId)
 			.then((likes) => {
-				setHero((state) => ({ ...state, likes }));
+				setHeroLikes(likes);
 			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 
 		canLike(heroId, getUserId)
 		.then((isLiked) => {
-			setHero((state) => ({ ...state, isLiked }));
+			setHeroCanLike(Boolean(isLiked));
 		})
 		.catch((error) => setErrorMessage(error.message))
 		.finally(() => setIsLoading(false));
@@ -101,7 +103,7 @@ export default function Details() {
 							Добавен преди {formatDateToTimeAgo(hero._createdOn)}.
 						</p>
 						<p className="mb-4 text-base text-white ">
-							Харесвания: {hero.likes}
+							Харесвания: {heroLikes}
 						</p>
 					</div>
 					{isLoggedIn &&
@@ -123,7 +125,7 @@ export default function Details() {
 							</>
 						) : (
 							<>
-								{hero.isLiked === 0 && (
+								{heroCanLike && (
 									<div className="hover:drop-shadow-lg hover:opacity-80 bg-blue-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
 										<button
 											className="lg:text-sm text-lg font-bold"
