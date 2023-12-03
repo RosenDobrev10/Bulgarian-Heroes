@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useForm(submitHandler, initialValues, validateFunction) {
 	const [formValues, setFormValues] = useState(initialValues);
@@ -6,6 +6,10 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 	const [formErrorMessage, setFormErrorMessage] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [isInvalidForm, setIsInvalidForm] = useState(true);
+
+	useEffect(() => {
+		validateForm()
+	}, [formErrorMessage]);
 	
 	function onChange(e) {
 		setFormValues((state) => ({
@@ -19,7 +23,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		setFormErrorMessage((state) => ({ ...state, ...currentErrors }));
 		validateForm();
 	}
-
+	
 	async function onSubmit(e){
 		e.preventDefault();
 		try {
@@ -31,12 +35,12 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 			setIsLoading(false);
 		}
 	}
-
+	
 	function validateForm(){
 		setIsInvalidForm(
 			Object.values(formValues).some(value => value === '') || 
 			Object.values(formErrorMessage).some(error => error)
-		);
+			);
 	}
 
 	function setChangedInitialValues(changedFormValues){
