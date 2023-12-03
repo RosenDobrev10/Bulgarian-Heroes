@@ -33,31 +33,14 @@ export default function Details() {
 			.finally(() => setIsLoading(false));
 
 		likesForHero(heroId)
-			.then((likes) => {
-				setHeroLikes(likes);
-			})
+			.then((likes) => setHeroLikes(likes))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 
 		canLike(heroId, getUserId)
-		.then((isLiked) => {
-			setHeroCanLike(Boolean(isLiked));
-		})
-		.catch((error) => setErrorMessage(error.message))
-		.finally(() => setIsLoading(false));
-
-		// Promise.all([
-		// 	getHeroById(heroId),
-		// 	likesForHero(heroId),
-		// 	canLike(heroId, getUserId)
-		// ])
-		// 	.then(([heroData, likes, isLiked]) => {
-		// 		setHero({ ...heroData, likes, isLiked });
-		// 		setIsOwner(getUserId === heroData._ownerId);
-		// 		document.title = heroData.name;
-		// 	})
-		// 	.catch((error) => setErrorMessage(error.message))
-		// 	.finally(() => setIsLoading(false));
+			.then((isLiked) => setHeroCanLike(Boolean(isLiked)))
+			.catch((error) => setErrorMessage(error.message))
+			.finally(() => setIsLoading(false));
 	}, [heroId, getUserId]);
 
 	function toggleDeleteModal() {
