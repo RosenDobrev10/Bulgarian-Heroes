@@ -13,7 +13,7 @@ import Message from '../Message/Message.jsx';
 export default function Details() {
 	const [hero, setHero] = useState({});
 	const [heroLikes, setHeroLikes] = useState(0);
-	const [heroCanLike, setHeroCanLike] = useState(0);
+	const [heroCanLike, setHeroCanLike] = useState(true);
 	const [isOwner, setIsOwner] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
@@ -38,7 +38,7 @@ export default function Details() {
 			.finally(() => setIsLoading(false));
 
 		canLike(heroId, getUserId)
-			.then((isLiked) => setHeroCanLike(Boolean(isLiked)))
+			.then((canLike) => setHeroCanLike(canLike === 0))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
 	}, [heroId, getUserId]);
@@ -52,7 +52,9 @@ export default function Details() {
 	}
 
 	function onAddLike() {
-		setHero((state) => ({ ...state, likes: state.likes + 1, isLiked: state.isLiked + 1 }));
+		// setHero((state) => ({ ...state, likes: state.likes + 1, isLiked: state.isLiked + 1 }));
+		setHeroLikes((state) => (state + 1));
+		setHeroCanLike(false);
 	}
 
 	return (
@@ -107,7 +109,7 @@ export default function Details() {
 							</>
 						) : (
 							<>
-								{heroCanLike && (
+								{heroCanLike ? (
 									<div className="hover:drop-shadow-lg hover:opacity-80 bg-blue-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
 										<button
 											className="lg:text-sm text-lg font-bold"
@@ -116,7 +118,14 @@ export default function Details() {
 											Харесай
 										</button>
 									</div>
-								)}
+								) : (<div className="hover:drop-shadow-lg hover:opacity-80 bg-blue-500 w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl  text-white text-center shadow-xl">
+										<button
+											disabled
+											className="cursor-not-allowed lg:text-sm text-lg font-bold"
+										>
+											Вече сте харесали
+										</button>
+							</div>)}
 							</>
 						))}
 				</div>
