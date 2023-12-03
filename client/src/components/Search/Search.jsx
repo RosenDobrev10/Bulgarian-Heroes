@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import styles from './Search.module.css'
 
 import { Ripple, initTE } from 'tw-elements';
 initTE({ Ripple });
@@ -8,9 +7,10 @@ initTE({ Ripple });
 import useForm from '../../hooks/useForm.js';
 import { searchHero } from '../../core/api/heroesApi.js';
 
+import Hero from '../Heroes/Hero/Hero.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-import Hero from '../Heroes/Hero/Hero.jsx';
+import NoResults from '../NoResults/NoResults.jsx';
 
 export default function Search() {
 	const [foundHeroes, setFoundHeroes] = useState([]);
@@ -70,34 +70,7 @@ export default function Search() {
 			</ul>
 			)}
 			
-			{hasSearch && foundHeroes.length === 0 && (
-			<div className={styles.waviy}>
-				<span style={{"--i":1}} className={styles.waviySpan}>Н</span>
-				<span style={{"--i":2}} className={styles.waviySpan}>я</span>
-				<span style={{"--i":3}} className={styles.waviySpan}>м</span>
-				<span style={{"--i":4}} className={styles.waviySpan}>а</span>
-				<span style={{"--i":5}} className={styles.waviySpan}>&nbsp;</span>
-				<span style={{"--i":5}} className={styles.waviySpan}>Н</span>
-				<span style={{"--i":6}} className={styles.waviySpan}>а</span>
-				<span style={{"--i":7}} className={styles.waviySpan}>м</span>
-				<span style={{"--i":9}} className={styles.waviySpan}>е</span>
-				<span style={{"--i":10}} className={styles.waviySpan}>р</span>
-				<span style={{"--i":11}} className={styles.waviySpan}>е</span>
-				<span style={{"--i":12}} className={styles.waviySpan}>н</span>
-				<span style={{"--i":13}} className={styles.waviySpan}>и</span>
-				<span style={{"--i":14}} className={styles.waviySpan}>&nbsp;</span>
-				<span style={{"--i":15}} className={styles.waviySpan}>р</span>
-				<span style={{"--i":16}} className={styles.waviySpan}>е</span>
-				<span style={{"--i":17}} className={styles.waviySpan}>з</span>
-				<span style={{"--i":18}} className={styles.waviySpan}>у</span>
-				<span style={{"--i":19}} className={styles.waviySpan}>л</span>
-				<span style={{"--i":20}} className={styles.waviySpan}>т</span>
-				<span style={{"--i":21}} className={styles.waviySpan}>а</span>
-				<span style={{"--i":22}} className={styles.waviySpan}>т</span>
-				<span style={{"--i":23}} className={styles.waviySpan}>и</span>
-				<span style={{"--i":24}} className={styles.waviySpan}>.</span>
-			</div>
-			)}
+			{hasSearch && foundHeroes.length === 0 && <NoResults text={'Няма намерени резултати.'}/>}
 
 		</div>
 	);
