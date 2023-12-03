@@ -7,10 +7,10 @@ initTE({ Ripple });
 import useForm from '../../hooks/useForm.js';
 import { searchHero } from '../../core/api/heroesApi.js';
 
-import Hero from '../Heroes/Hero/Hero.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
 import NoResults from '../NoResults/NoResults.jsx';
+import HeroList from '../HeroList/HeroList.jsx';
 
 export default function Search() {
 	const [foundHeroes, setFoundHeroes] = useState([]);
@@ -60,15 +60,7 @@ export default function Search() {
 				</button>
 			</form>
 
-			{hasSearch && foundHeroes.length > 0 && (
-				<ul className="flex gap-10 flex-wrap justify-between m-5">
-				{foundHeroes.map((hero) => (
-					<li key={hero._id} className="w-5/12 h-auto">
-						<Hero {...hero} />
-					</li>
-				))}
-			</ul>
-			)}
+			{hasSearch && foundHeroes.length > 0 && <HeroList heroes={foundHeroes}/>}
 			
 			{hasSearch && foundHeroes.length === 0 && <NoResults text={'Няма намерени резултати.'}/>}
 
