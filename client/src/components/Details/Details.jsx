@@ -21,7 +21,6 @@ export default function Details() {
 	const [showLikeModal, setShowLikeModal] = useState(false);
 	const { heroId } = useParams();
 	const { getUserId, isLoggedIn } = useAuthContext();
-	console.log('initial state' + hero.likes);
 
 	useEffect(() => {
 		getHeroById(heroId)
