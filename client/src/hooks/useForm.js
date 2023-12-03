@@ -35,7 +35,7 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 	function validateForm(){
 		setIsInvalidForm(
 			Object.values(formValues).some(value => value === '') || 
-			Object.values(formErrorMessage).every(error => error)
+			Object.values(formErrorMessage).some(error => error)
 		);
 	}
 
@@ -52,6 +52,6 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		onChange,
 		onBlur,
 		onSubmit,
-		setChangedInitialValues
+		setChangedInitialValues,
 	};
 }
