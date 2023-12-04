@@ -13,7 +13,7 @@ export default function Comment({ comments }) {
 				>
 					<div className="flex flex-col">
 						<p className="text-xl whitespace-nowrap truncate overflow-hidden">
-							{comment.owner?.email}
+							{comment?.owner.email}
 						</p>
 						<p className="text-gray-400 text-sm mb-4">
 							Добавен преди {formatDateToTimeAgo(comment._createdOn)}.
