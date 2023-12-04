@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import useAuthContext from '../../hooks/useAuthContext.js';
 import { canLike, getHeroById, likesForHero} from '../../core/api/heroesApi.js';
-import { getAllCommentsForHero} from '../../core/api/commentsApi.js';
+import { createComment, getAllCommentsForHero} from '../../core/api/commentsApi.js';
 import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
 import commentReducer from '../Comment/commentReducer.js';
 
@@ -26,7 +26,7 @@ export default function Details() {
 
     const [comments, dispatch] = useReducer(commentReducer, []);
 	const { heroId } = useParams();
-	const { getUserId, isLoggedIn } = useAuthContext();
+	const { getUserId, isLoggedIn, getUserEmail } = useAuthContext();
 
 	useEffect(() => {
 		getHeroById(heroId)
@@ -68,6 +68,16 @@ export default function Details() {
 	function onAddLike() {
 		setHeroLikes((state) => (state + 1));
 		setHeroCanLike(false);
+	}
+
+	async function addCommentHandler(formValues) {
+		const newComment = await createComment(heroId, formValues.comment);
+		newComment.owner = { email: getUserEmail };
+
+		dispatch({
+			type: 'ADD_COMMENT',
+			payload: newComment,
+		});
 	}
 
 	return (
@@ -154,7 +164,7 @@ export default function Details() {
 				{isLoggedIn && (
 				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
 					<h2 className="mb-4 text-3xl font-medium text-white text-center">Добави коментар</h2>
-					<AddComment heroId={heroId}/>
+					<AddComment heroId={heroId} addCommentHandler={addCommentHandler}/>
 				</div>
 				)}
 
