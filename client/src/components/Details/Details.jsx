@@ -144,17 +144,20 @@ export default function Details() {
 				</div>
 			</div>
 			
-			<div className='flex justify-between mt-0 m-10 bg-green-500 p-5 rounded-lg shadow-2xl'>					
+			<div className='flex justify-between mt-0 m-10 bg-green-500 p-5 rounded-lg shadow-2xl'>
+
 				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
 					<h2 className="mb-4 text-3xl font-medium text-white text-center">Коментари</h2>
 					<Comment comments={comments}/>
 				</div>
+
 				{isLoggedIn && (
 				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
 					<h2 className="mb-4 text-3xl font-medium text-white text-center">Добави коментар</h2>
 					<AddComment heroId={heroId}/>
 				</div>
 				)}
+
 			</div>			
 
 			{showDeleteModal && <Delete toggleDeleteModal={toggleDeleteModal} {...hero} />}
