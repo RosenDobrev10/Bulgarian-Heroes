@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import styles from './NoResults.module.css';
 
-export default function NoResults({ text, buttonText }) {
+export default function NoResults({ text, buttonText, textColor }) {
 	const characters = text.split('');
 
 	return (
@@ -10,7 +10,7 @@ export default function NoResults({ text, buttonText }) {
 			{characters.map((char, index) => (
 				<span
 					key={index}
-					style={{ '--i': index + 1 }}
+					style={{ '--i': index + 1, color: textColor }}
 					className={styles.waviySpan}
 				>
 					{char !== ' ' ? char : '\u00A0' }
