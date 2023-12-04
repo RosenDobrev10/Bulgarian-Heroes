@@ -1,26 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import { useReducer } from 'react';
-import { createComment } from '../../core/api/commentsApi.js';
-import commentReducer from '../Comment/commentReducer.js';
-import useAuthContext from '../../hooks/useAuthContext.js';
 import useForm from '../../hooks/useForm.js';
 import commentValidation from '../Comment/commentValidation.js';
+
 import Message from '../Message/Message.jsx';
 
-export default function AddComment({ heroId }) {
-	const [, dispatch] = useReducer(commentReducer, []);
-	const { getUserEmail } = useAuthContext();
-
-	async function addCommentHandler(formValues) {
-		const newComment = await createComment(heroId, formValues.comment);
-		newComment.owner = { email: getUserEmail };
-
-		dispatch({
-			type: 'ADD_COMMENT',
-			payload: newComment,
-		});
-	}
+export default function AddComment({ addCommentHandler }) {
 
 	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit } = useForm(addCommentHandler, {
 			comment: ''
