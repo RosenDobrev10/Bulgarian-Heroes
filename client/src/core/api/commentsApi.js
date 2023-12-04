@@ -7,7 +7,7 @@ export async function getAllCommentsForHero(heroId) {
 		load: `owner=_ownerId:users`,
 	});
 
-	return api.get(`${endpoints.getCommentsForHero}?${query}`);
+	return api.get(`${endpoints.getCommentsForHero}${query}`);
 }
 
 export async function createComment(heroId, comment) {
