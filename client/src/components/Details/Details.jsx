@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import useAuthContext from '../../hooks/useAuthContext.js';
 import { canLike, getHeroById, likesForHero} from '../../core/api/heroesApi.js';
+import { getAllCommentsForHero} from '../../core/api/commentsApi.js';
 import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
+import commentReducer from '../Comment/commentReducer.js';
 
 import Delete from '../Heroes/Delete/Delete.jsx';
 import Like from '../Heroes/Like/Like.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
+import Comment from '../Comment/Comment.jsx';
+import AddComment from '../AddComment/AddComment.jsx';
 
 export default function Details() {
 	const [hero, setHero] = useState({});
@@ -19,6 +23,8 @@ export default function Details() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [showLikeModal, setShowLikeModal] = useState(false);
+
+    const [comments, dispatch] = useReducer(commentReducer, []);
 	const { heroId } = useParams();
 	const { getUserId, isLoggedIn } = useAuthContext();
 
@@ -41,6 +47,14 @@ export default function Details() {
 			.then((canLike) => setHeroCanLike(canLike === 0))
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoading(false));
+
+		getAllCommentsForHero(heroId)
+			.then((commentsForHero) => {
+				dispatch({
+					type: 'GET_ALL_COMMENTS_FOR_HERO',
+					payload: commentsForHero,
+				});
+			});
 	}, [heroId, getUserId]);
 
 	function toggleDeleteModal() {
@@ -52,7 +66,6 @@ export default function Details() {
 	}
 
 	function onAddLike() {
-		// setHero((state) => ({ ...state, likes: state.likes + 1, isLiked: state.isLiked + 1 }));
 		setHeroLikes((state) => (state + 1));
 		setHeroCanLike(false);
 	}
@@ -130,6 +143,19 @@ export default function Details() {
 						))}
 				</div>
 			</div>
+			
+			<div className='flex justify-between mt-0 m-10 bg-green-500 p-5 rounded-lg shadow-2xl'>					
+				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
+					<h2 className="mb-4 text-3xl font-medium text-white text-center">Коментари</h2>
+					<Comment comments={comments}/>
+				</div>
+				{isLoggedIn && (
+				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
+					<h2 className="mb-4 text-3xl font-medium text-white text-center">Добави коментар</h2>
+					<AddComment heroId={heroId}/>
+				</div>
+				)}
+			</div>			
 
 			{showDeleteModal && <Delete toggleDeleteModal={toggleDeleteModal} {...hero} />}
 
