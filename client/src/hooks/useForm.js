@@ -29,6 +29,11 @@ export default function useForm(submitHandler, initialValues, validateFunction) 
 		try {
 			setIsLoading(true);
 			await submitHandler(formValues);
+			setFormValues((state) => {
+				const newState = {};
+				Object.keys(state).forEach(key => newState[key] = '');
+				return newState;
+			});  
 		} catch (error) {
 			setServerErrorMessage(error.message);
 		} finally {
