@@ -81,11 +81,19 @@ export default function Details() {
 	}
 
 	async function deleteCommentHandler(comment) {
-		// const deletedComment = await deleteComment(comment._id);
 
 		dispatch({
 			type: 'DELETE_COMMENT',
 			payload: comment,
+		});
+	}
+
+	async function editCommentHandler(editedComment) {
+		editedComment.owner = { email: getUserEmail };
+
+		dispatch({
+			type: 'EDIT_COMMENT',
+			payload: editedComment,
 		});
 	}
 
@@ -167,7 +175,7 @@ export default function Details() {
 
 				<div className='flex flex-col mt-3 basis-1/2 items-center'>				
 					<h2 className="mb-4 text-3xl font-medium text-white text-center">Коментари</h2>
-					<Comment comments={comments} deleteCommentHandler={deleteCommentHandler}/>
+					<Comment comments={comments} deleteCommentHandler={deleteCommentHandler} editCommentHandler={editCommentHandler} heroId={heroId}/>
 				</div>
 
 				{isLoggedIn && (
