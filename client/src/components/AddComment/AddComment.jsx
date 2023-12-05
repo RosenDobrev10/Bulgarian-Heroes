@@ -7,7 +7,8 @@ import Message from '../Message/Message.jsx';
 
 export default function AddComment({ addCommentHandler }) {
 
-	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit } = useForm(addCommentHandler, {
+	const { formValues, formErrorMessage, serverErrorMessage, isLoading, isInvalidForm, onChange, onBlur, onSubmit } = useForm(addCommentHandler,
+		{
 			comment: ''
 		},
 		commentValidation
