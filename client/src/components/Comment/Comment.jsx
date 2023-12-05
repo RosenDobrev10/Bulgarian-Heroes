@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
+
 import NoResults from '../NoResults/NoResults.jsx';
 
 export default function Comment({ comments }) {
