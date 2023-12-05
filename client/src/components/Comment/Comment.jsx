@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
+import useAuthContext from '../../hooks/useAuthContext.js';
 
 import NoResults from '../NoResults/NoResults.jsx';
 import DeleteComment from './DeleteComment/DeleteComment.jsx';
-import useAuthContext from '../../hooks/useAuthContext.js';
+import EditComment from './EditComment/EditComment.jsx';
 
-export default function Comment({ comments, deleteCommentHandler }) {
+export default function Comment({ comments, deleteCommentHandler, editCommentHandler, heroId }) {
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	const [showEditModal, setShowEditModal] = useState(false);
 	const [commentDetails, setCommentDetails] = useState({});
@@ -24,6 +25,11 @@ export default function Comment({ comments, deleteCommentHandler }) {
 
 	function toggleEditModal() {
 		setShowEditModal(!showEditModal);
+	}
+
+	function editClickHandler(comment){
+		toggleEditModal();
+		setCommentDetails(comment)
 	}
 
 	return (
@@ -55,7 +61,7 @@ export default function Comment({ comments, deleteCommentHandler }) {
 						<div className="hover:drop-shadow-lg hover:opacity-80 bg-yellow-500 w-72 m-auto mt-6 p-2 rounded-2xl text-center text-white shadow-xl">
 							<button 
 								className="lg:text-sm text-lg font-bold"
-								onClick={toggleEditModal}
+								onClick={() => editClickHandler(comment)}
 							>
 								Промени
 							</button>
@@ -65,9 +71,20 @@ export default function Comment({ comments, deleteCommentHandler }) {
 				</div>
 			))}
 
-			{showDeleteModal && <DeleteComment toggleDeleteModal={toggleDeleteModal} comment={commentDetails} deleteCommentHandler={deleteCommentHandler}/>}
+			{showDeleteModal && 
+			<DeleteComment 
+			toggleDeleteModal={toggleDeleteModal} 
+			comment={commentDetails} 
+			deleteCommentHandler={deleteCommentHandler}
+			/>}
 
-			{/* {showEditModal && <EditComment toggleEditModal={toggleEditModal} {...comment} />} */}
+			{showEditModal && 
+			<EditComment 
+			toggleEditModal={toggleEditModal} 
+			comment={commentDetails} 
+			editCommentHandler={editCommentHandler} 
+			heroId={heroId}
+			/>}
 
 			{comments.length === 0 && <NoResults text={'Няма добавени коментари.'} textColor={'white'}/>}
 		</>
