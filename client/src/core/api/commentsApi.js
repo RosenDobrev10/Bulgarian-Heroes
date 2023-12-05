@@ -13,3 +13,11 @@ export async function getAllCommentsForHero(heroId) {
 export async function createComment(heroId, comment) {
 	return api.post(endpoints.createComment, { heroId, comment });
 }
+
+export async function editCommentById(commentId, comment) {
+	return api.put(endpoints.editComment(commentId), {comment});
+}
+
+export async function deleteComment(commentId) {
+	return api.del(endpoints.deleteComment(commentId));
+}
