@@ -14,8 +14,8 @@ export async function createComment(heroId, comment) {
 	return api.post(endpoints.createComment, { heroId, comment });
 }
 
-export async function editCommentById(commentId, comment) {
-	return api.put(endpoints.editComment(commentId), {comment});
+export async function editCommentById(commentId, heroId, comment) {
+	return api.put(endpoints.editComment(commentId), { heroId, comment });
 }
 
 export async function deleteComment(commentId) {
