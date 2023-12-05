@@ -22,8 +22,9 @@ export const endpoints = {
 	getMyHeroes: (userId) => `data/heroes?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`,
 	getCommentsForHero: 'data/comments?sortBy=_createdOn%20desc&',
 	createComment: 'data/comments',
+	editComment: (commentId) => `data/comments/${commentId}`,
+	deleteComment: (commentId) => `data/comments/${commentId}`,
 };
-
 
 export const loginFormKeys = {
 	email: 'email',
