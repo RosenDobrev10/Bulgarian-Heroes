@@ -71,7 +71,7 @@ For a quick exploration, you can use the following demo accounts:
 ## Features
 <ins>Public part visible without authentication:</ins>
 - **Home page** is accessible by all users, and features a carousel component with buttons to change the current image.
-- **Heroes page** presents brief information about all heroes, with button to see detailed information and comments without interactive functionalities.
+- **Heroes page** presents brief information about all heroes, with button to see detailed information and comments sorted by latest without interactive functionalities.
 - **Sign Up** page expects as input email, password and repeat password, <ins>all fields are required to create a new user</ins>
     - Email is validated with regex pattern.  
     - Password should be at least 6 characters long.
@@ -80,11 +80,10 @@ For a quick exploration, you can use the following demo accounts:
 
 <ins>Private part visible after successful authentication and authorization:</ins>
 - **Heroes page** presents brief information about all heroes, with button to see detailed information and comments with interactive functionalities.
-    - if the user <ins>isn't the creator</ins> of the hero, one option is available: <ins>like the hero</ins> if it's already liked. 
-        - **Book button** is displayed and the trip can be booked.
-        - **Like button** is displayed and the trip can be liked. Likes are individual to each boat and are cumulative.
-        - when a boat is booked, it dynamically appears in the "My Bookings" list on the user's profile page, providing a real-time visualization of the user's booked trips. 
-        - each user has the ability to <ins>book and like a specific boat trip only once</ins>, ensuring a singular reservation and expression of interest for each boat.
+    - if the user <ins>isn't the creator</ins> of the hero, two options are available:
+        - **Like button** is displayed and the hero can be liked. Likes are individual to each hero and are cumulative.
+        - If the hero is already liked, it shows appropriate message.
+        - **Add comment form** is displayed and the user can write a comment about the hero. Also the user can delete and edit his own comments.
     - if the user is the <ins>creator</ins> of the hero:
         - **Edit button** is displayed and the hero can be edited.
         - **Delete button** is displayed and the hero can be deleted.
@@ -127,41 +126,79 @@ The React frontend of Bulgarian Heroes is deployed on [Vercel](https://vercel.co
 
 The following application architecture diagram is generated using [dependency-cruiser](https://github.com/sverweij/dependency-cruiser). It visually represents the dependencies within the project.
 
-![Architecture from dependency-cruiser](/client/dependency-graph-main.svg)
-![Memelandia_App_React_client_high-level-dependencies](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/b5f29627-783a-4522-b2fe-96131c37c853)
-
-For a detailed analysis of dependencies, you can run dependency-cruiser in your project. To get started, visit the [dependency-cruiser on NPM](https://www.npmjs.com/package/dependency-cruiser)
+![Architecture](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/e0f72220-354e-4a8a-ad38-0489a9099a9e)
 
 ## Screenshots
 
 ### Desktop
 
-#### Home Page - Top three rated memes
-![Home Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/9671b565-b2f8-4f60-851c-69719e3b5850)
+#### Home
 
-#### Memeboard Page - Display the Latest Memes with infinite scroll pagination
+![Home](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/93f7c933-2d44-402e-9527-1bf4a9ddebac)
 
-![Memeboard Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/8ea4e942-8282-47a8-94ec-e2a74c83160a)
+#### Heroes
 
-#### Login Page - Display the highest rated meme
+![Heroes](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/6f274644-c043-4317-8d96-5f060cbfa816)
 
-![Login Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/f70872aa-e273-4fa6-86f6-eac5547551a6)
+#### Details - Not logged in
 
-#### Register Page - Display the second highest rated meme
+![Details - Not Logged In](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/5835c128-a175-4f49-8268-a6520a5798a4)
 
-![Register Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/55c05f9e-0193-4a7c-8219-5ded0615cb82)
+#### Details - Owner
 
-#### About Page
+![Details - Owner](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/28407dcf-9e7a-4951-a66d-56b9d3032c8f)
 
-![About Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/66dc0888-1766-4c3a-a0cd-f37d7a995d84)
+#### Details - Not owner
 
-#### Create Page
+![Details - Not Owner](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/e8b5a834-5f2d-4d9c-9176-c43a9eaf0ce5)
 
-![Create Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/12f74d18-484c-418c-9fc4-51b053b98cc7)
+#### Comments - Logged in
 
-#### Profile Page
+![Comments logged in](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/e564c5fd-9b57-4367-89bf-1d389649e2f9)
 
-![Profile Page](https://github.com/TodorYadkov/Memelandia_App_React/assets/4013980/61b9ed7f-725c-4f15-bfbf-83fd197de12d)
+#### No comments - Not logged in
+
+![No comments not logged in](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/a9c8dc19-5e15-4848-ac04-27fe975f0e72)
+
+#### Login
+
+![Login](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/69602f67-43ff-4ace-a8f8-4ae5e03dc297)
+
+#### Register
+
+![Register](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/b4f454e8-149e-4cd5-a7c4-03fd399c150a)
+
+#### Add
+
+![Add](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/a49ab4a8-2a46-4d8b-8db2-846be7a73cb2)
+
+#### Search
+
+![Search](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/799d5096-92e4-44da-8336-f9f44311497b)
+
+#### Edit
+
+![Edit](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/8048b65c-27b3-4155-a528-463acb0d4791)
+
+#### Profile
+
+![Profile](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/0137faa4-28eb-47b7-8c5c-1494fbc4c970)
+
+#### Not Found
+
+![Not Found](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/5df977e2-b39e-4fae-b252-2e79ea52a868)
+
+#### Navigation - Logged in
+
+![Navigation - Logged In](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/9300e247-2652-45e9-9ca4-d7c1f94c8e67)
+
+#### Navigation - Not logged in
+
+![Navigation - Not Logged In](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/3b9fce9c-eca2-4113-90f8-159ab58a191b)
+
+#### Footer 
+
+![Footer](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/d4b7d6b1-9d1c-40db-a510-03d03b403d32)
 
 # License
 
