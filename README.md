@@ -109,7 +109,7 @@ The project incorporates several security enhancements:
 ## Additional libraries
 - [Tailwind](https://tailwindcss.com/) - Used for styling the application.
 - [Tailwind Elements](https://tw-elements.com/) - Used for already styled components.
-- [React router dom](https://reactrouter.com/) - Handles the routing of the application.
+- [React router dom](https://reactrouter.com/) - Used for handling the routing of the application.
 - [Vitest](https://vitest.dev/) - Used for writing unit tests.
 
 ## Deployment
