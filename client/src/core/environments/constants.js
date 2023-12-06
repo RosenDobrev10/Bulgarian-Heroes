@@ -1,10 +1,12 @@
+/* eslint-disable no-useless-escape */
+
 export const host = 'http://localhost:3030/';
 // export const host = 'https://bulgarian-heroes-ex79.vercel.app/';
 // export const host = 'https://bulgarian-heroes-rd-10.onrender.com/';
 
 export const tokenName = 'userToken';
 
-export const emailPattern = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+export const emailPattern = /^[a-zA-Z0-9_\.]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
 
 export const endpoints = {
 	register: 'users/register',
