@@ -15,8 +15,6 @@ Welcome to Bulgarian Heroes.
 9. [Deployment](#deployment)
 10. [Screenshots](#screenshots)
 11. [License](#license)
-8. [Server Readme](https://github.com/TodorYadkov/Memelandia_App_React/blob/main/server/README.md) (Opens in a new tab)
-9. [Client Readme](https://github.com/TodorYadkov/Memelandia_App_React/blob/main/client/README.md) (Opens in a new tab)
 
 ## Overview
 
