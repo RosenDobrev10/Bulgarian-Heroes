@@ -162,11 +162,11 @@ The following application architecture diagram is generated using [dependency-cr
 
 #### Login
 
-![Login](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/69602f67-43ff-4ace-a8f8-4ae5e03dc297)
+![Login](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/81688b4e-a7a3-45d6-aba0-84a66162ec45)
 
 #### Register
 
-![Register](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/b4f454e8-149e-4cd5-a7c4-03fd399c150a)
+![Register](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/6350f98b-03e5-4530-91a8-cd2d25919fe8)
 
 #### Add
 
@@ -186,7 +186,7 @@ The following application architecture diagram is generated using [dependency-cr
 
 #### Not Found
 
-![Not Found](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/5df977e2-b39e-4fae-b252-2e79ea52a868)
+![Not Found](https://github.com/RosenDobrev10/Bulgarian-Heroes/assets/104829819/9b6338c0-1b57-4954-9397-4571933e497e)
 
 #### Navigation - Logged in
 
