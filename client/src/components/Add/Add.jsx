@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm.js';
-import { addFormKeys } from '../../core/environments/constants.js';
 import { createHero } from '../../core/api/heroesApi.js';
+import { addFormKeys } from '../../core/environments/constants.js';
 import addValidation from './addValidation.js';
 
 import Message from '../Message/Message.jsx';

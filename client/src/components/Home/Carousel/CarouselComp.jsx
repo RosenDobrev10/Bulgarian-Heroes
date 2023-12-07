@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { Carousel, initTE } from 'tw-elements';
 import styles from './CarouselComp.module.css';
 

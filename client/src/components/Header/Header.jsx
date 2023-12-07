@@ -7,6 +7,7 @@ import useAuthContext from '../../hooks/useAuthContext.js';
 
 export default function Header() {
 	const { isLoggedIn, getUserEmail } = useAuthContext();
+
 	return (
 		<>
 			<ul

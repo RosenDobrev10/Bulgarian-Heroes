@@ -9,10 +9,10 @@ import commentReducer from '../Comment/commentReducer.js';
 
 import Delete from '../Heroes/Delete/Delete.jsx';
 import Like from '../Heroes/Like/Like.jsx';
-import Spinner from '../Spinner/Spinner.jsx';
-import Message from '../Message/Message.jsx';
 import Comment from '../Comment/Comment.jsx';
 import AddComment from '../AddComment/AddComment.jsx';
+import Spinner from '../Spinner/Spinner.jsx';
+import Message from '../Message/Message.jsx';
 
 export default function Details() {
 	const [hero, setHero] = useState({});

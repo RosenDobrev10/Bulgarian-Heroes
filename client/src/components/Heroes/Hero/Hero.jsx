@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
+
 import { Link } from 'react-router-dom';
 import styles from './Hero.module.css'
-
 import { Ripple, initTE } from 'tw-elements';
 initTE({ Ripple });
 

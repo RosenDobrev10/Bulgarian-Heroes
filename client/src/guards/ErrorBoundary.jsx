@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import { Component } from 'react';
 
 export class ErrorBoundary extends Component {

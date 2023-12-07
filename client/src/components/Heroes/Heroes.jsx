@@ -4,10 +4,10 @@ initTE({ Animate });
 
 import { getAllHeroes } from '../../core/api/heroesApi.js';
 
+import HeroList from '../HeroList/HeroList.jsx';
+import NoResults from '../NoResults/NoResults.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-import NoResults from '../NoResults/NoResults.jsx';
-import HeroList from '../HeroList/HeroList.jsx';
 
 export default function Heroes() {
 	const [heroes, setHeroes] = useState([]);

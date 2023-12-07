@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
+import useForm from '../../../hooks/useForm.js';
 import { editCommentById } from '../../../core/api/commentsApi.js';
 import commentValidation from '../commentValidation.js';
-import useForm from '../../../hooks/useForm.js';
 
 import Spinner from '../../Spinner/Spinner.jsx';
 import Message from '../../Message/Message.jsx';

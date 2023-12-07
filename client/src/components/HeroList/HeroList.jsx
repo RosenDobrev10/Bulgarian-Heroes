@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
+
 import Hero from "../Heroes/Hero/Hero.jsx";
 
-/* eslint-disable react/prop-types */
 export default function HeroList({heroes}) {
 	return (
 		<ul className="flex gap-10 flex-wrap justify-between m-5">

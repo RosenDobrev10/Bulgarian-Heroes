@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 import { screen, render } from '@testing-library/react';
 
 import Footer from './Footer.jsx';

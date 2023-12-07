@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import { Navigate, Outlet } from 'react-router-dom';
 
 import useAuthContext from '../hooks/useAuthContext.js';

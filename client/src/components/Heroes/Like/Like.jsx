@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 import { useState } from 'react';
 
 import { likeHero } from '../../../core/api/heroesApi.js';

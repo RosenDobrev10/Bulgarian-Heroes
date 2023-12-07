@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm.js';
-import { addFormKeys } from '../../core/environments/constants.js';
 import { editHeroById, getHeroById } from '../../core/api/heroesApi.js';
+import { addFormKeys } from '../../core/environments/constants.js';
 import addValidation from '../Add/addValidation.js';
 
 import Spinner from '../Spinner/Spinner.jsx';

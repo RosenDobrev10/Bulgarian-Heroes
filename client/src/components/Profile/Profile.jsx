@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { Animate, initTE } from 'tw-elements';
 initTE({ Animate });
 
-import { getMyHeroes } from '../../core/api/heroesApi.js';
 import useAuthContext from '../../hooks/useAuthContext.js';
+import { getMyHeroes } from '../../core/api/heroesApi.js';
 
+import HeroList from '../HeroList/HeroList.jsx';
+import NoResults from '../NoResults/NoResults.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-import NoResults from '../NoResults/NoResults.jsx';
-import HeroList from '../HeroList/HeroList.jsx';
 
 export default function Profile() {
 	const [myHeroes, setMyHeroes] = useState([]);

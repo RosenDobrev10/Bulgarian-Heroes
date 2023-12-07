@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import { Ripple, initTE } from 'tw-elements';
 initTE({ Ripple });
 
 import useForm from '../../hooks/useForm.js';
 import { searchHero } from '../../core/api/heroesApi.js';
 
+import HeroList from '../HeroList/HeroList.jsx';
+import NoResults from '../NoResults/NoResults.jsx';
 import Spinner from '../Spinner/Spinner.jsx';
 import Message from '../Message/Message.jsx';
-import NoResults from '../NoResults/NoResults.jsx';
-import HeroList from '../HeroList/HeroList.jsx';
 
 export default function Search() {
 	const [foundHeroes, setFoundHeroes] = useState([]);

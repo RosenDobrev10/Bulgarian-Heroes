@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from 'react';
-import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
+
 import useAuthContext from '../../hooks/useAuthContext.js';
+import formatDateToTimeAgo from '../../util/formatDateToTimeAgo.js';
 
 import NoResults from '../NoResults/NoResults.jsx';
 import DeleteComment from './DeleteComment/DeleteComment.jsx';

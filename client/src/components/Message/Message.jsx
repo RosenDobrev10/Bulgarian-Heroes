@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react';
-
 import { Toast, initTE } from 'tw-elements';
 
 export default function Message({ serverErrorMessage }) {
+	
 	useEffect(() => {
 		initTE({ Toast });
 	}, []);
