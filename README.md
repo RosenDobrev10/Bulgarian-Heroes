@@ -76,7 +76,7 @@ For a quick exploration, you can use the following demo accounts:
 - **Sign Up** page expects as input email, password and repeat password, <ins>all fields are required to create a new user</ins>
     - Email is validated with regex pattern.  
     - Password should be at least 6 characters long.
-    - The password and the repeated password should match.
+    - Password and confirm password should match.
 - **Login page** expects a valid email and password as input
 
 <ins>Private part visible after successful authentication and authorization:</ins>
