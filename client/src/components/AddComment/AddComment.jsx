@@ -18,7 +18,7 @@ export default function AddComment({ addCommentHandler }) {
 		<>
 			{!isLoading && serverErrorMessage && <Message serverErrorMessage={serverErrorMessage} />}
 
-			<form className="w-full md:w-1/2 p-6 bg-white" onSubmit={onSubmit}>
+			<form className="w-full md:w-1/2 p-6 bg-white rounded-lg" onSubmit={onSubmit}>
 				<div>
 					<div className="relative flex flex-col mb-3">
                     {formErrorMessage.comment && (
@@ -57,7 +57,7 @@ export default function AddComment({ addCommentHandler }) {
 				<div className="w-full pt-3">
 					<button
                         disabled={isInvalidForm}
-						className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} w-full bg-red-500 text-white px-4 py-2 font-semibold hover:opacity-80 text-xl cursor-pointer`}
+						className={`${isInvalidForm ? 'cursor-not-allowed' : 'cursor-pointer'} rounded-2xl w-full bg-red-500 text-white px-4 py-2 font-semibold hover:opacity-80 text-xl cursor-pointer`}
 					>
 						Добави
 					</button>
