@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-escape */
 
 export const host = 'http://localhost:3030/';
-// export const host = 'https://bulgarian-heroes-ex79.vercel.app/';
 // export const host = 'https://bulgarian-heroes-rd-10.onrender.com/';
 
 export const tokenName = 'userToken';
