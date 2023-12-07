@@ -61,6 +61,7 @@ For a quick exploration, you can use the following demo accounts:
 -   **Logged-In User (Not Owner):**
 
     -   Like other users heroes.
+    -   Write comments.
 
 -   **Logged-In User (Owner):**
     
