@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 
 import { screen, render } from '@testing-library/react';
+import { describe, expect } from 'vitest';
 
 import Footer from './Footer.jsx';
 

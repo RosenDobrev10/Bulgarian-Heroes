@@ -3,6 +3,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect } from 'vitest';
 
 import { AuthContext } from '../../contexts/AuthContext.jsx';
 
