@@ -133,6 +133,7 @@ export default function Register() {
 										value={formValues[registerFormKeys.password]}
 									/>
 									<button
+										data-testid="togglePassword"
 										type="button"
 										onClick={togglePasswordVisibility}
 									>
@@ -188,7 +189,7 @@ export default function Register() {
 												/>
 											</svg>
 										</span>
-										{formErrorMessage.repass ? formErrorMessage.repass : 'Паролите не съвпадат!'}
+										{formErrorMessage.repass ? formErrorMessage.repass : 'Паролите не съвпадат !'}
 									</div>
 								)}
 								<div className="flex items-center justify-between py-2 rounded border-2 border-green-500">
@@ -203,6 +204,7 @@ export default function Register() {
 										value={formValues[registerFormKeys.repass]}
 									/>
 									<button
+										data-testid="toggleConfirmPassword"
 										type="button"
 										onClick={toggleConfirmPasswordVisibility}
 									>
