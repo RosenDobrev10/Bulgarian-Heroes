@@ -132,6 +132,7 @@ export default function Login() {
 										}
 									/>
 									<button
+										data-testid="togglePassword"
 										type="button"
 										onClick={togglePasswordVisibility}
 									>
