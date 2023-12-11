@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useForm from '../../hooks/useForm.js';
+import useAuthContext from '../../hooks/useAuthContext.js';
 import { editHeroById, getHeroById } from '../../core/api/heroesApi.js';
 import { addFormKeys } from '../../core/environments/constants.js';
 import addValidation from '../Add/addValidation.js';
@@ -14,11 +15,17 @@ export default function Edit() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const navigate = useNavigate();
 	const { heroId } = useParams();
+	const { getUserId } = useAuthContext();
 
 	useEffect(() => {
 		document.title = 'Промени';
 		getHeroById(heroId)
-			.then((heroData) => setChangedInitialValues(heroData))
+			.then((heroData) => {
+				if (heroData._ownerId !== getUserId ){
+					return navigate(`/heroes/${heroId}`);
+				}
+				setChangedInitialValues(heroData);
+			})
 			.catch((error) => setErrorMessage(error.message))
 			.finally(() => setIsLoadingMain(false));
 	}, [heroId]);
