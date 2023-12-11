@@ -53,3 +53,8 @@ export default function App() {
 		</AuthProvider>
 	);
 }
+
+
+// Add more protected routes
+// - 
+// Do not let the users add images with wrong size/format
